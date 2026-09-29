@@ -65,13 +65,14 @@ body { font-family: 'GraphikX', 'Inter', sans-serif; background: var(--nero); }
 
 .jar_motion {
   pointer-events: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
+  position: fixed !important;
+  top: 0 !important; left: 0 !important;
+  width: 100vw !important; height: 100dvh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 3 !important;
+  overflow: visible !important;
 }
 .box_motion {
   width: clamp(280px, 45vw, 600px);
