@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<title>OLIVETI RITROVATI — L'Olio Ritrovato di Matera</title>
+<meta name="description" content="Olio extravergine d'oliva da olivi centenari ritrovati nella campagna materana. Premio OLIVARUM 2023. 500ml · €10. Ordina via WhatsApp."/>
+<meta property="og:title" content="OLIVETI RITROVATI — L'Olio Ritrovato di Matera"/>
+<meta property="og:description" content="Olio extravergine d'oliva da olivi centenari ritrovati nella campagna materana. Premio OLIVARUM 2023."/>
+<meta property="og:image" content="https://oliveti-ritrovati.vercel.app/images/bottiglia.png"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="canonical" href="https://oliveti-ritrovati.vercel.app/"/>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<style>
+@font-face {
+  font-family: 'Salmond';
+  src: url('fonts/salmond-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Salmond';
+  src: url('fonts/salmond-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GraphikX';
+  src: url('fonts/GraphikX-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --nero: #0A0806;
+  --oro: #B89A3E;
+  --tufo: #C8B89A;
+  --bianco: #F5F0E8;
+}
+
+body { font-family: 'GraphikX', 'Inter', sans-serif; background: var(--nero); }
+.h1, .h2, .h3, .h4, .like_h1, .h2_middle, .footer_txt {
+  font-family: 'Salmond', serif !important;
+}
+
+.h-link { border-color: var(--oro) !important; }
+.h-link:hover, .h-link.w--current { background: var(--oro) !important; }
+.button .back_color_button { background: var(--oro) !important; }
+.dotted_line {
+  height: 4px;
+  width: 100%;
+  background-image: repeating-radial-gradient(circle, var(--oro) 0, var(--oro) 2px, transparent 2px, transparent 10px) !important;
+  background-size: 10px 4px;
+  background-repeat: repeat-x;
+  image-rendering: pixelated;
+}
+.traditions { background: var(--oro) !important; }
+.tag_one, .tag_recipe { background: var(--oro) !important; }
+
+.jar_motion {
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+.box_motion {
+  width: clamp(280px, 45vw, 600px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.j_p img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 80px rgba(184,154,62,.5)) drop-shadow(0 0 20px rgba(212,184,106,.2));
+  animation: jar_enter 1.2s cubic-bezier(.34,1.56,.64,1) .1s both;
+}
+@keyframes jar_enter {
+  from { opacity: 0; transform: scale(.7) translateY(30px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.wrapper_hero { position: relative; z-index: 10; }
+
+::-webkit-scrollbar { width: 0px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: transparent; }
+
+[text-split] { opacity: 0; }
+
+::selection { background: var(--oro); color: var(--nero); }
+
+.wa_fixed {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 999;
+}
+.wa_fixed a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: #25D366;
+  box-shadow: 0 4px 16px rgba(37,211,102,.4);
+  transition: transform .2s;
+}
+.wa_fixed a:hover { transform: scale(1.1); }
+.wa_fixed svg { width: 28px; height: 28px; fill: #fff; }
+
+.fullsize .overlay_image {
+  background: linear-gradient(to bottom, rgba(10,8,6,.3) 0%, rgba(10,8,6,.6) 100%) !important;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="wrapper_header">
+    <div class="flexbox_header">
+      <a href="#" class="menu_link w-inline-block" id="menu_toggle">
+        <div class="hamburger_menu">
+          <div class="line first"></div>
+          <div class="line second"></div>
+        </div>
+        <div class="menu_txt open">menu</div>
+        <div class="menu_txt close">close</div>
+      </a>
+      <div class="left_links">
+        <a href="#" aria-current="page" class="h-link w-inline-block w--current"><div class="txt_header">olio</div></a>
+        <a href="#tradition" class="h-link w-inline-block"><div class="txt_header">storia</div></a>
+        <a href="#acquista" class="h-link w-inline-block"><div class="txt_header">acquista</div></a>
+      </div>
+      <div class="logo_ht">
+        <a aria-label="OLIVETI RITROVATI Home" href="#" class="logo_hungry_tiger w-inline-block w--current">
+          <img src="images/logo.svg" loading="eager" alt="Oliveti Ritrovati logo" class="image" style="height:52px;width:auto;"/>
+        </a>
+      </div>
+      <div class="right_links">
+        <a href="#newsletter" class="h-link w-inline-block"><div class="txt_header">contatti</div></a>
+        <a href="https://wa.me/393393792491" target="_blank" rel="noopener" class="h-link w-inline-block" style="background:var(--oro);border-color:var(--oro);"><div class="txt_header" style="color:var(--nero);">ordina</div></a>
+      </div>
+    </div>
+    <div class="dotted_line"></div>
+  </div>
+</header>
+
+<div class="mobile_menu" id="mobile_menu">
+  <div class="wrapper_menu">
+    <div class="menu_list">
+      <a href="#" aria-current="page" class="mobile_link w-inline-block w--current"><div>home</div></a>
+      <a href="#tradition" class="mobile_link w-inline-block"><div>storia</div></a>
+      <a href="#acquista" class="mobile_link w-inline-block"><div>acquista</div></a>
+    </div>
+    <div class="bottom_links">
+      <div class="dotted_line"></div>
+      <div class="bottom_links_menu">
+        <a href="#acquista" class="small_menu_link w-inline-block"><div>come ordinare</div></a>
+        <a href="#newsletter" class="small_menu_link w-inline-block"><div>contatti</div></a>
+      </div>
+      <div class="location_email_ig">
+        <div class="email_loc">
+          <a href="#" class="s_small_link w-inline-block"><div>matera, basilicata, IT</div></a>
+          <a href="mailto:olivetiritrovatimatera@gmail.com" class="s_small_link w-inline-block"><div>olivetiritrovatimatera@gmail.com</div></a>
+        </div>
+        <div class="ig_mobile_menu">
+          <a href="https://instagram.com/percorsiritrovatimatera" target="_blank" rel="noopener" class="instagram_link w-inline-block" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wa_fixed">
+  <a href="https://wa.me/393393792491" target="_blank" rel="noopener" aria-label="Ordina via WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+</div>
+
+<section class="hero_part">
+  <div class="jar_motion">
+    <div class="box_motion">
+      <div class="j_p">
+        <img src="images/bottiglia.png" loading="eager" alt="Bottiglia Oliveti Ritrovati — Olio Extravergine di Oliva Matera"/>
+      </div>
+    </div>
+  </div>
+  <div class="hero_section">
+    <div class="wrapper_hero">
+      <div class="middle_al">
+        <div class="caption_hero">
+          <div class="caption_txt">OLIO EXTRAVERGINE DI OLIVA</div>
+        </div>
+        <div class="h1_hero">
+          <h1 class="h1">l'olio<br/>ritrovato</h1>
+        </div>
+        <div class="dotted_line"></div>
+        <div class="additional_headline">
+          <div class="like_h1">di matera</div>
+        </div>
+      </div>
+      <div class="bottom_part">
+        <div class="container_cta">
+          <div class="txt_box">
+            <div class="base_txt">Dai secoli di silenzio degli oliveti materani, un olio che racconta radici, pietra e luce del Sud.</div>
+          </div>
+          <a href="https://wa.me/393393792491" target="_blank" rel="noopener" class="button w-inline-block">
+            <div class="button_txt">ordina ora</div>
+            <div class="back_color_button"></div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="background_hero">
+      <div class="grain_texture"></div>
+      <div class="texture_background" style="background-image:url('images/texture_hero.avif');"></div>
+      <div class="w-embed"><style>
+.grain_texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(0,0,0,.04) 1px, transparent 1px);
+  background-size: 2px 2px;
+  opacity: .2;
+  z-index: 10;
+}
+      </style></div>
+    </div>
+  </div>
+</section>
+
+<div class="blank_section"></div>
+
+<div class="angle_part">
+  <div class="wrapper">
+    <div class="h2_box">
+      <h2 text-split="" scrub-each-word="" class="h2">Un Nuovo Angolo<br/>di Sapore</h2>
+    </div>
+    <div class="special_mg">
+      <div class="section_paragraph">
+        <div class="base_txt">Scopri come olivi centenari, rispettati nella loro lentezza, producono un olio di straordinaria complessità e armonia.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="unwrap_part">
+  <div class="w-embed"><style>
+.text-textured {
+  background-image: url('images/texture_headline.avif');
+  background-size: cover;
+  background-position: center;
+  color: rgba(184,154,62,.25);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+  </style></div>
+  <div class="wrapper">
+    <div class="middle_h">
+      <h2 scrub-each-word="" text-split="" class="h2_middle text-textured">Apri la Bottiglia</h2>
+    </div>
+    <div class="small_txt">
+      <div class="icons_flex">
+        <div class="circle_highlight" aria-label="Varietà Tarantina" style="display:flex;align-items:center;justify-content:center;font-size:1.5rem;">🫒</div>
+        <div class="circle_highlight" aria-label="Varietà Ghiannara" style="display:flex;align-items:center;justify-content:center;font-size:1.5rem;">🌿</div>
+        <div class="circle_highlight" aria-label="Premio OLIVARUM" style="display:flex;align-items:center;justify-content:center;font-size:1.5rem;">🏆</div>
+      </div>
+      <div class="base_txt middle_txt">Apri la bottiglia: ti investe il profumo fruttato delle varietà Tarantina e Ghiannara, con note erbacee e mandorlate. Raccolto a mano, molito entro 8 ore dalla raccolta.</div>
+    </div>
+  </div>
+</div>
+
+<div id="acquista" class="angle_part last_spec">
+  <div class="wrapper sticky_spec">
+    <div class="right_cta">
+      <div class="left_cta">
+        <div class="base_txt">Un olio di alta qualità, frutto di olivi che aspettavano da decenni di tornare a produrre — tutto in un'unica bottiglia da 500ml a €10.</div>
+        <a href="https://wa.me/393393792491" target="_blank" rel="noopener" class="button w-inline-block">
+          <div class="button_txt">ordina ora</div>
+          <div class="back_color_button"></div>
+        </a>
+      </div>
+    </div>
+    <div class="bottom_p">
+      <h2 scrub-each-word="" text-split="" class="h2">Una Nuova Prospettiva<br/>sul Gusto</h2>
+    </div>
+  </div>
+</div>
+
+<section class="inside_sides">
+  <div class="flexbox_insides">
+    <div class="left_side">
+      <div class="wrapper_sides">
+        <div class="heading_side">
+          <div class="headline_side">
+            <h3 scrub-each-word="" text-split="" class="h3">cosa c'è<br/>dentro</h3>
+          </div>
+          <div class="dotted_line"></div>
+        </div>
+        <div class="wrapper_side">
+          <div class="description_inside">
+            <div class="base_txt">Il nostro olio nasce da olive selezionate a mano da olivi centenari della campagna materana.</div>
+          </div>
+          <div class="cms_inside">
+            <div class="list_icon">
+              <div class="flex_inside">
+                <div class="circle_inside" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;font-size:1.25rem;">🫒</div>
+                <div class="caption_inside"><div class="base_txt">Varietà Tarantina — amara, polifenolica, raccolta a metà novembre</div></div>
+              </div>
+              <div class="flex_inside">
+                <div class="circle_inside" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;font-size:1.25rem;">🌿</div>
+                <div class="caption_inside"><div class="base_txt">Varietà Ghiannara — delicata, precoce, raccolta ad ottobre</div></div>
+              </div>
+              <div class="flex_inside">
+                <div class="circle_inside" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;font-size:1.25rem;">⚗️</div>
+                <div class="caption_inside"><div class="base_txt">0 fertilizzanti chimici, 0 fitofarmaci — metodo naturale integrale</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right_side">
+      <div class="image_box sides">
+        <img src="images/ulivi.jpg" loading="lazy" alt="Radici di ulivi centenari materani" class="image"/>
+      </div>
+    </div>
+  </div>
+  <div class="flexbox_insides">
+    <div class="left_side">
+      <div class="wrapper_side">
+        <div class="md_txts">
+          <div text-split="" scrub-each-word="" class="md_txt">Nessun compromesso.</div>
+          <div scrub-each-word="" text-split="" class="md_txt">Nessuna scorciatoia.</div>
+        </div>
+        <div class="bold_cap">
+          <div text-split="" scrub-each-word="" class="bold_txt">solo sapore autentico in ogni bottiglia</div>
+        </div>
+      </div>
+    </div>
+    <div class="right_side">
+      <div class="image_box sides">
+        <img src="images/oliveto-panorama.jpg" loading="lazy" alt="Panoramica oliveti con Matera sullo sfondo" class="image"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tradition" class="traditions">
+  <div class="wrapper_base tradition_creation">
+    <div>
+      <h2 scrub-each-word="" text-split="" class="h2 dark_heading">tradizione<br/>&amp; metodo</h2>
+      <div class="dark_paragraph">
+        <div class="base_txt dark_paragraph">Dalla potatura degli ulivi alla molitura in frantoio entro 8 ore dalla raccolta: rispettiamo ogni fase della natura.</div>
+      </div>
+    </div>
+    <div class="cms_traditions">
+      <div class="flex_traditions">
+        <div class="item_tradition">
+          <div class="title_tradition">
+            <div class="traditional_number"><div class="number_txt">01</div></div>
+            <div class="ch_tradition"><div class="base_txt dark_paragraph">~3000 olivi centenari salvati dall'abbandono</div></div>
+          </div>
+          <div class="image_box">
+            <img src="images/oliveti-centenari.jpg" loading="lazy" alt="Olivi centenari della campagna materana" class="image"/>
+          </div>
+        </div>
+        <div class="item_tradition">
+          <div class="title_tradition">
+            <div class="traditional_number"><div class="number_txt">02</div></div>
+            <div class="ch_tradition"><div class="base_txt dark_paragraph">Raccolta a mano, rispettando i tempi della natura</div></div>
+          </div>
+          <div class="image_box">
+            <img src="images/tour-oliveto.jpg" loading="lazy" alt="Raccolta delle olive negli oliveti materani" class="image"/>
+          </div>
+        </div>
+        <div class="item_tradition">
+          <div class="title_tradition">
+            <div class="traditional_number"><div class="number_txt">03</div></div>
+            <div class="ch_tradition"><div class="base_txt dark_paragraph">Molitura entro 8 ore: massima qualità e freschezza</div></div>
+          </div>
+          <div class="image_box">
+            <img src="images/frantoio-antico.jpg" loading="lazy" alt="Interno del frantoio rupestre in tufo" class="image"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper_base special_jar">
+    <div class="middle_matters">
+      <h2 scrub-each-word="" text-split="" class="h2 dark_heading middle">perché il<br/>prodotto conta</h2>
+      <div class="box_ch">
+        <div class="base_txt dark_paragraph">Una bottiglia da 500ml che racchiude secoli di storia, terra e cura — a soli €10.</div>
+      </div>
+      <div class="tags_abs">
+        <div class="tag_one ff">100% naturale</div>
+        <div class="tag_one ss">varietà certificate</div>
+        <div class="tag_one tt">OLIVARUM 2023</div>
+      </div>
+    </div>
+    <div class="cms_grid">
+      <div class="jar_grid">
+        <div class="cms_item">
+          <div>
+            <div class="title_flex">
+              <div class="circle_inside dark_brown" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;font-size:1.25rem;">🏆</div>
+              <div><div class="base_txt dark_paragraph">Premio OLIVARUM 2023</div></div>
+            </div>
+            <div class="p_why">
+              <div class="base_txt dark_paragraph">Riconosciuto come Olio Lucano d'Eccellenza alla manifestazione OLIVARUM della Regione Basilicata, marzo 2023.</div>
+            </div>
+            <div class="image_why">
+              <img src="images/masseria.jpg" loading="lazy" alt="Masseria degli oliveti" class="image"/>
+            </div>
+          </div>
+        </div>
+        <div class="cms_item">
+          <div>
+            <div class="title_flex">
+              <div class="circle_inside dark_brown" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;font-size:1.25rem;">🌱</div>
+              <div><div class="base_txt dark_paragraph">Slow Food Basilicata</div></div>
+            </div>
+            <div class="p_why">
+              <div class="base_txt dark_paragraph">Nati come costola della Comunità Slow Food OLIVETI RITROVATI DEL MATERANO, con il Prof. Francesco Linzalone — ex fiduciario Slow Food Matera.</div>
+            </div>
+            <div class="image_why">
+              <img src="images/cappella-rupestre.jpg" loading="lazy" alt="Cappella rupestre materana" class="image"/>
+            </div>
+          </div>
+        </div>
+        <div class="cms_item">
+          <div>
+            <div class="title_flex">
+              <div class="circle_inside dark_brown" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;font-size:1.25rem;">🫙</div>
+              <div><div class="base_txt dark_paragraph">Produzione limitata</div></div>
+            </div>
+            <div class="p_why">
+              <div class="base_txt dark_paragraph">Quantità limitata ogni anno. Ogni bottiglia rappresenta il lavoro di una stagione intera — prenotala prima che finisca.</div>
+            </div>
+            <div class="image_why">
+              <img src="images/masseria-interno.jpg" loading="lazy" alt="Interno masseria in tufo" class="image"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="background_grain"></div>
+  </div>
+</section>
+
+<section class="fullsize">
+  <div class="content_cta">
+    <div>
+      <div class="h2_box_cta">
+        <h2 scrub-each-word="" text-split="" class="h2">scopri la magia<br/>di un olio<br/>ritrovato</h2>
+        <a href="https://wa.me/393393792491" target="_blank" rel="noopener" class="button spec_buy w-inline-block">
+          <div class="button_txt">ordina ora</div>
+          <div class="back_color_button"></div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="abs_bg">
+    <div class="overlay_image"></div>
+    <div class="background_image">
+      <img src="images/hero-oliveto.jpg" loading="lazy" alt="Panoramica oliveti con Matera sullo sfondo" class="image"/>
+    </div>
+  </div>
+</section>
+
+<section id="newsletter" class="discount_newsletter">
+  <div class="flexbox_newsletter">
+    <div class="left_discount">
+      <div class="wrapper_discount">
+        <div class="discount_box">
+          <div class="discount_txt">Scrivici per ordinare, per informazioni, o per una visita guidata agli oliveti.</div>
+        </div>
+        <div class="form_subscribe">
+          <div style="display:flex;flex-direction:column;gap:.75rem;margin-top:1rem;">
+            <a href="https://wa.me/393393792491" target="_blank" rel="noopener" class="subscribe_button" style="display:block;text-align:center;text-decoration:none;padding:.75rem 1.5rem;font-size:.875rem;font-weight:600;border-radius:6px;background:var(--oro);color:var(--nero);">
+              WhatsApp: +39 339 379 2491
+            </a>
+            <a href="mailto:olivetiritrovatimatera@gmail.com" class="subscribe_button" style="display:block;text-align:center;text-decoration:none;padding:.75rem 1.5rem;font-size:.875rem;font-weight:600;border-radius:6px;background:rgba(200,184,154,.15);color:var(--bianco);border:1px solid rgba(200,184,154,.3);">
+              olivetiritrovatimatera@gmail.com
+            </a>
+            <a href="https://instagram.com/percorsiritrovatimatera" target="_blank" rel="noopener" class="subscribe_button" style="display:block;text-align:center;text-decoration:none;padding:.75rem 1.5rem;font-size:.875rem;font-weight:600;border-radius:6px;background:rgba(200,184,154,.08);color:var(--tufo);border:1px solid rgba(200,184,154,.15);">
+              @percorsiritrovatimatera
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right_discount_img">
+      <div class="image_discount">
+        <img src="images/prof-linzalone.jpg" loading="lazy" alt="Prof. Francesco Linzalone, fondatore di Oliveti Ritrovati" class="image"/>
+      </div>
+    </div>
+  </div>
+  <div class="embed_css w-embed"><style>
+.spin { animation: spin 15s linear infinite; }
+@keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  </style></div>
+</section>
+
+<section class="footer">
+  <div class="wrapper_footer">
+    <div class="ht_txt_footer">
+      <div class="footer_txt">Oliveti Ritrovati</div>
+    </div>
+    <div class="footer_menu">
+      <div class="left_menus">
+        <div class="m_footer">
+          <a href="#" aria-current="page" class="f-link w-inline-block w--current"><div>olio</div></a>
+          <a href="#tradition" class="f-link w-inline-block"><div>storia</div></a>
+          <a href="#acquista" class="f-link w-inline-block"><div>acquista</div></a>
+        </div>
+        <div class="m_footer">
+          <a href="#newsletter" class="f-link w-inline-block"><div>contatti</div></a>
+          <a href="https://wa.me/393393792491" target="_blank" rel="noopener" class="f-link w-inline-block"><div>ordina via whatsapp</div></a>
+        </div>
+      </div>
+      <div class="right_menus links_ig">
+        <div class="m_footer special_footer">
+          <a href="#" class="f-link w-inline-block"><div>Matera, Basilicata, IT</div></a>
+          <a href="mailto:olivetiritrovatimatera@gmail.com" class="f-link w-inline-block"><div>olivetiritrovatimatera@gmail.com</div></a>
+        </div>
+        <div class="m_footer">
+          <a aria-label="Instagram Oliveti Ritrovati" href="https://instagram.com/percorsiritrovatimatera" target="_blank" rel="noopener" class="instagram_link w-inline-block">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dot_line_footer">
+    <div class="dotted_line"></div>
+  </div>
+  <div class="last_links">
+    <div>
+      <div class="f-link"><span class="span_year">2025</span> © oliveti ritrovati</div>
+    </div>
+    <div class="right_menus">
+      <div class="m_footer special_footer">
+        <a href="#" class="f-link w-inline-block"><div>tutti i diritti riservati</div></a>
+      </div>
+      <div class="m_footer">
+        <a href="https://wa.me/393393792491" target="_blank" rel="noopener" class="f-link w-inline-block"><div>+39 339 379 2491</div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@0.2.28/bundled/lenis.js"></script>
+<script>
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  direction: 'vertical',
+  smooth: true,
+  mouseMultiplier: 1,
+  smoothTouch: false,
+  touchMultiplier: 2,
+  infinite: false,
+});
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.body.classList.add(navigator.platform.toUpperCase().indexOf('MAC') >= 0 ? 'mac' : 'windows');
+});
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.span_year').forEach(el => { el.textContent = new Date().getFullYear(); });
+});
+document.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.getElementById('menu_toggle');
+  const menu = document.getElementById('mobile_menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      const open = menu.classList.toggle('open');
+      document.body.classList.toggle('menu_open', open);
+    });
+  }
+});
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.querySelector('.header');
+  const sections = document.querySelectorAll('#tradition, #newsletter');
+  function onScroll() {
+    let found = false;
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+        header.classList.add('difference'); found = true;
+      }
+    });
+    if (!found) header.classList.remove('difference');
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+});
+</script>
+
+<script src="https://unpkg.com/split-type"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  if (typeof SplitType === 'undefined' || typeof gsap === 'undefined') return;
+  new SplitType('[text-split]', { types: 'words, chars', tagName: 'span' });
+  document.querySelectorAll('[scrub-each-word]').forEach(el => {
+    let tl = gsap.timeline({
+      scrollTrigger: { trigger: el, start: 'top 90%', end: 'top center', scrub: true }
+    });
+    tl.from(el.querySelectorAll('.word'), { opacity: 0.2, duration: 0.2, ease: 'power1.out', stagger: { each: 0.4 } });
+  });
+  gsap.set('[text-split]', { opacity: 1 });
+});
+</script>
+
+</body>
+</html>

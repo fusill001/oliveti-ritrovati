@@ -1,0 +1,160 @@
+# PROGETTO BIBBIA — OLIVETI RITROVATI
+
+> File di riferimento permanente. Leggi questo prima di toccare qualsiasi cosa.
+
+---
+
+## BRAND
+
+**Nome corretto:** OLIVETI RITROVATI (plurale, sempre così — mai "OLIVETO RITROVATO")  
+**Forma breve:** OLIVETI RITROVATI  
+**Tagline:** L'olio ritrovato di Matera  
+**Sito live:** https://oliveti-ritrovati.vercel.app  
+**Instagram:** @percorsiritrovatimatera  
+**Email:** olivetiritrovatimatera@gmail.com  
+**WhatsApp ordini:** +39 339 379 2491 → `https://wa.me/393393792491`
+
+---
+
+## IL PROGETTO
+
+Società Cooperativa OLIVETI RITROVATI — costola della Comunità Slow Food OLIVETI RITROVATI DEL MATERANO.
+
+**Fondatore:** Prof. Francesco Linzalone — agronomo, ex professore, ex fiduciario Slow Food Matera, ex coordinatore regionale guide Osterie d'Italia ed Extravergini. Famiglia con frantoio storico in Via Casalnuovo (Sassi di Matera) dal 1959.
+
+**Missione:** salvare ~3000 olivi centenari abbandonati nella campagna materana. Comodato d'uso con i proprietari, cura colturale, produzione dell'OLIO RITROVATO.
+
+**Varietà:** Tarantina (amara, polifferolica, matura a metà novembre) + Ghiannara/Gnannara (delicata, precoce, matura ottobre).
+
+**Metodo:** 0 fertilizzanti chimici, 0 fitofarmaci, potatura a Vaso Policonico, trinciatura residui, molitura entro 8 ore dalla raccolta.
+
+**Premio:** Marzo 2023 → OLIO LUCANO D'ECCELLENZA (manifestazione OLIVARUM, Regione Basilicata).
+
+**Anno 2026:** Prima produzione olio monovarietale TARANTINA — prima volta nella storia che Matera produce un olio varietale certificato.
+
+---
+
+## PRODOTTO & PREZZI
+
+- **Bottiglia 500ml:** €10
+- Produzione 2022: 250L in bottiglie (≈500 bottiglie), 350L in lattine
+- Entrate stimate: ~€6.000
+- Quantità limitata ogni anno
+
+---
+
+## STACK TECNICO
+
+```
+Tipo:           Static HTML — NESSUN framework
+Deploy:         Vercel (outputDirectory: "public")
+File principale: public/index.html
+Animazioni:     GSAP 3.12.5 + ScrollTrigger (cdnjs CDN)
+Font:           Cinzel (titoli) + EB Garamond (corpo) — Google Fonts
+Deploy cmd:     cd workspaces/oliveti-ritrovati && vercel --prod
+```
+
+### vercel.json
+```json
+{ "outputDirectory": "public", "rewrites": [{"source": "/(.*)", "destination": "/index.html"}] }
+```
+
+---
+
+## PALETTE COLORI
+
+```css
+--nero:   #0A0806   /* sfondo principale */
+--oro:    #B89A3E   /* accent primario */
+--tufo:   #C8B89A   /* testo secondario, dettagli */
+--bianco: #F5F0E8   /* testo principale */
+--verde:  #2A4A2A   /* accent secondario */
+```
+
+---
+
+## FONT
+
+```css
+Cinzel (weights: 400, 700, 900) — titoli hero, logo
+EB Garamond (weights: 400, 500, italic) — corpo testo, citazioni
+```
+
+---
+
+## REFERENCE DESIGN: Hungry Tiger
+
+File locale: `/Users/emanuelebruno/Downloads/sito-scaricato/www.eathungrytiger.com/index.html`
+
+Pattern CSS chiave da replicare IDENTICI (solo colori/font adattati):
+- `.jar_motion` — bottiglia centrata e fissa, 100vw x 100dvh
+- `.background_hero` — background fisso per parallax su scroll
+- `.like_h1` — titolo hero 5-7em, Cinzel 900, line-height .9, uppercase, tracking tight
+- `.h-link` — nav pill, border-radius 100em, background oro, padding px
+- `.traditions` — sezione sfondo oro (#B89A3E per noi), testo scuro
+- `.breakdown_grid` — griglia 4 colonne borderate per dettagli prodotto
+- `grain_texture` — overlay grana film, mix-blend-mode:overlay, opacity .04
+- `.wrapper_hero` — position:relative z-index:1 per scrollare sopra la bottiglia
+
+---
+
+## FOTO DISPONIBILI (public/images/)
+
+| File | Contenuto |
+|------|-----------|
+| `bottiglia.png` | Bottiglia matte nera su sfondo nero — usa mix-blend-mode:lighten |
+| `hero-oliveto.jpg` | Panoramica oliveto con Matera sullo sfondo |
+| `masseria.jpg` | Masseria con arco in tufo |
+| `ulivi.jpg` | Close-up radici ulivi centenari |
+| `prof-linzalone.jpg` | **RITRATTO Prof. Linzalone** (occhiali rotondi, camicia, sfondo olivi — perfetto per sezione "Chi siamo") |
+| `oliveto-panorama.jpg` | Panoramica oliveti con Matera in lontananza |
+| `oliveti-centenari.jpg` | Campo verde con ulivi centenari solitari |
+| `tour-oliveto.jpg` | Gruppo in visita guidata negli oliveti (Prof. che indica albero) |
+| `masseria-interno.jpg` | Interno masseria in tufo, volta a botte — Prof. che racconta |
+| `cappella-rupestre.jpg` | Cappella rupestre con affresco e arco |
+| `frantoio-antico.jpg` | Interno frantoio rupestre con volta in tufo |
+
+---
+
+## VIDEO DRONE
+
+Percorso: `/Users/emanuelebruno/Desktop/Desktop/SynologyDrive/PERCORSI RITROVATI/video drone/`
+- DJI_0228.MP4, DJI_0201.MP4, DJI_0020.MP4, DJI_0195.MP4, DJI_0293.MP4
+
+⚠️ File > 50MB: NON caricare su Vercel direttamente. Opzioni:
+1. Comprimere con ffmpeg a < 50MB e caricare
+2. YouTube unlisted + embed
+3. Cloudflare Stream
+
+---
+
+## STRUTTURA SITO (sezioni in ordine)
+
+1. **Header** — logo mark + wordmark + nav pills (Lo Shop, La Storia, Contatti)
+2. **Hero/Bottiglia** — jar_motion, bottiglia centrata fissa, titolo hero "L'OLIO / RITROVATO / DI MATERA"
+3. **Intro fullbleed** — foto panoramica oliveto, testo su sfondo
+4. **Storia del Territorio** — testo narrativo, immagine masseria
+5. **Tradizione & Metodo** — sezione oro (traditions), 4 step numerati
+6. **Il Prodotto** — breakdown_grid, prezzo €10, CTA WhatsApp
+7. **Il Professore** — ritratto Prof. Linzalone + bio breve
+8. **Premi** — badge OLIVARUM 2023 + Slow Food
+9. **Galleria** — grid foto Marco Vitale
+10. **Abbinamenti** — cards con suggerimenti culinari
+11. **Acquista** — sezione urgency, bottiglia limitata, CTA WhatsApp grande
+12. **Footer** — Instagram + email + copyright
+
+---
+
+## DOCUMENTI SORGENTE
+
+- Curriculum: `/Users/emanuelebruno/Desktop/Desktop/SynologyDrive/OLIVETI RITROVATI/CURRICULUM OLIVETI RITROVATI.docx`
+- Storia prof: `/Users/emanuelebruno/Downloads/sito_prof/LA STORIA.docx`
+- Varietà olio: `/Users/emanuelebruno/Downloads/sito_prof/OLIVETI RITROVATI.docx`
+- Matera città dell'olio: `/Users/emanuelebruno/Downloads/sito_prof/Matera città dell'olio.docx`
+
+---
+
+## LOGHI UFFICIALI
+
+- SVG: `/Users/emanuelebruno/Desktop/Desktop/SynologyDrive/OLIVETI RITROVATI/loghi/coop oliveti ritrovati.svg`
+- File mark: `brand/logo/olive_tree_mark_CANVA_recolorable.svg` (6 ring paths, viewBox 0 0 1254 1254)
