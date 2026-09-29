@@ -43,8 +43,12 @@
   --tufo:    #9A9590;
   --bianco:  #d9d9d9;
   --bianco2: #f0ece4;
-  /* override HT Webflow CSS variable */
-  --brown:   #232323;
+  /* override HT Webflow CSS variables */
+  --brown:       #232323;
+  --primary:     #C4A84A;
+  --dark-brown:  #232323;
+  --darker-brown:#1a1a1a;
+  --light-brown: #9A9590;
 }
 
 /* background_hero è position:fixed e usa --brown — va forzato */
@@ -135,15 +139,15 @@ body {
   align-items: center;
   justify-content: center;
 }
-.j_p img {
+.j_p canvas {
   width: 100%;
   height: auto;
-  mix-blend-mode: lighten;
-  filter: drop-shadow(0 0 80px rgba(196,168,74,.4)) drop-shadow(0 0 24px rgba(196,168,74,.15));
-  animation: jar_enter 1.2s cubic-bezier(.34,1.56,.64,1) .1s both;
+  display: block;
+  filter: drop-shadow(0 0 60px rgba(196,168,74,.35));
+  animation: jar_enter 1.4s cubic-bezier(.34,1.56,.64,1) .2s both;
 }
 @keyframes jar_enter {
-  from { opacity: 0; transform: scale(.7) translateY(30px); }
+  from { opacity: 0; transform: scale(.6) translateY(40px); }
   to   { opacity: 1; transform: scale(1)  translateY(0); }
 }
 
@@ -219,26 +223,14 @@ body {
       </div>
       <div class="logo_ht">
         <a aria-label="OLIVETI RITROVATI Home" href="#" class="logo_hungry_tiger w-inline-block w--current">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 52" style="height:52px;width:auto;display:block;" aria-label="Oliveti Ritrovati" role="img">
-            <!-- 6-ring mark -->
-            <g transform="translate(26,26)">
-              <circle r="24"   fill="#C4A84A" opacity="0.22"/>
-              <circle r="19.5" fill="#232323"/>
-              <circle r="18.5" fill="#C4A84A" opacity="0.42"/>
-              <circle r="14.5" fill="#232323"/>
-              <circle r="13.5" fill="#C4A84A" opacity="0.62"/>
-              <circle r="9.5"  fill="#232323"/>
-              <circle r="8.5"  fill="#C4A84A" opacity="0.78"/>
-              <circle r="5.2"  fill="#232323"/>
-              <circle r="4.2"  fill="#C4A84A" opacity="0.92"/>
-              <circle r="1.8"  fill="#232323"/>
-              <circle r="1"    fill="#C4A84A"/>
-            </g>
-            <!-- Wordmark -->
-            <text x="58" y="20" font-family="'Salmond','Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="#d9d9d9" letter-spacing="2.5">OLIVETI</text>
-            <text x="58" y="38" font-family="'Salmond','Georgia','Times New Roman',serif" font-size="15" font-weight="700" fill="#d9d9d9" letter-spacing="2.5">RITROVATI</text>
-            <text x="59" y="50" font-family="'Salmond','Georgia',serif" font-size="7" font-weight="400" fill="#C4A84A" letter-spacing="3.5">MATERA · BASILICATA</text>
-          </svg>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <img src="images/ring-mark.svg" loading="eager" alt="" aria-hidden="true" style="height:46px;width:46px;filter:brightness(0) saturate(100%) invert(67%) sepia(46%) saturate(500%) hue-rotate(7deg) brightness(90%) contrast(90%);"/>
+            <div style="line-height:1;">
+              <div style="font-family:'Salmond','Georgia',serif;font-size:13px;font-weight:700;letter-spacing:2.5px;color:#d9d9d9;text-transform:uppercase;">Oliveti</div>
+              <div style="font-family:'Salmond','Georgia',serif;font-size:13px;font-weight:700;letter-spacing:2.5px;color:#d9d9d9;text-transform:uppercase;">Ritrovati</div>
+              <div style="font-family:'GraphikX','Inter',sans-serif;font-size:6.5px;letter-spacing:3px;color:#C4A84A;margin-top:2px;">MATERA · BASILICATA</div>
+            </div>
+          </div>
         </a>
       </div>
       <div class="right_links">
@@ -288,7 +280,7 @@ body {
   <div class="jar_motion">
     <div class="box_motion">
       <div class="j_p">
-        <img src="images/bottiglia.png" loading="eager" alt="Bottiglia Oliveti Ritrovati — Olio Extravergine di Oliva Matera"/>
+        <canvas id="bottle3d" aria-label="Bottiglia Oliveti Ritrovati — Olio Extravergine di Oliva Matera" style="width:100%;aspect-ratio:1/2;display:block;"></canvas>
       </div>
     </div>
   </div>
@@ -730,23 +722,15 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script>
 window.addEventListener('DOMContentLoaded', () => {
   if (typeof gsap === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger);
 
-  // Rotazione lenta continua — come il vasetto di HT
-  gsap.to('.j_p', {
-    rotation: 360,
-    duration: 22,
-    ease: 'none',
-    repeat: -1,
-    transformOrigin: '50% 50%',
-  });
-
-  // Parallax: la bottiglia sale mentre si scrolla via dall'hero
+  // ── PARALLAX BOTTIGLIA ────────────────────────────
   gsap.to('.jar_motion', {
-    yPercent: -28,
+    yPercent: -30,
     ease: 'none',
     scrollTrigger: {
       trigger: '.hero_part',
@@ -755,19 +739,196 @@ window.addEventListener('DOMContentLoaded', () => {
       scrub: true,
     },
   });
-
-  // Fade out bottiglia quando esce dall'hero
   gsap.to('.jar_motion', {
     opacity: 0,
     ease: 'none',
     scrollTrigger: {
       trigger: '.hero_part',
-      start: '60% top',
+      start: '55% top',
       end: 'bottom top',
       scrub: true,
     },
   });
+
+  // ── SEZIONI DINAMICHE ─────────────────────────────
+  // Immagini slide in da destra
+  gsap.utils.toArray('.image_box.sides').forEach((el, i) => {
+    gsap.from(el, {
+      xPercent: i % 2 === 0 ? 15 : -15,
+      opacity: 0,
+      duration: 1.2,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
+    });
+  });
+
+  // Tradition items stagger
+  gsap.from('.item_tradition', {
+    y: 60, opacity: 0, stagger: 0.15, duration: 1, ease: 'power3.out',
+    scrollTrigger: { trigger: '.cms_traditions', start: 'top 80%' },
+  });
+
+  // cms_item cards
+  gsap.from('.cms_item', {
+    y: 50, opacity: 0, stagger: 0.12, duration: 0.9, ease: 'power2.out',
+    scrollTrigger: { trigger: '.cms_grid', start: 'top 80%' },
+  });
+
+  // angle_part h2
+  gsap.from('.angle_part .h2_box', {
+    y: 40, opacity: 0, duration: 1.1, ease: 'power2.out',
+    scrollTrigger: { trigger: '.angle_part', start: 'top 75%' },
+  });
 });
+</script>
+
+<script>
+// ── THREE.JS BOTTIGLIA 3D ─────────────────────────────────────
+(function () {
+  if (typeof THREE === 'undefined') return;
+  const canvas = document.getElementById('bottle3d');
+  if (!canvas) return;
+
+  const W = canvas.parentElement.offsetWidth || 320;
+  const H = W * 2;
+  canvas.width  = W * window.devicePixelRatio;
+  canvas.height = H * window.devicePixelRatio;
+  canvas.style.width  = W + 'px';
+  canvas.style.height = H + 'px';
+
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(W, H);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.2;
+
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(28, W / H, 0.1, 100);
+  camera.position.set(0, 0, 7);
+
+  // ── Bottle profile (lathe around Y axis) ──────────
+  const pts = [
+    [0.00, -2.60], // bottom flat
+    [0.34, -2.55], // base edge
+    [0.42, -2.30], // body start
+    [0.46, -1.50], // widest
+    [0.44, -0.40], // shoulder
+    [0.22,  0.30], // neck bottom
+    [0.17,  0.80], // neck
+    [0.15,  1.20], // top neck
+    [0.18,  1.28], // cork rim
+    [0.18,  1.60], // cork top
+    [0.00,  1.62], // center top
+  ].map(([x, y]) => new THREE.Vector2(x, y));
+
+  const bottleGeo = new THREE.LatheGeometry(pts, 72);
+
+  // ── Materials ──────────────────────────────────────
+  const bodyMat = new THREE.MeshStandardMaterial({
+    color: 0x0d0d0d,
+    roughness: 0.85,
+    metalness: 0.08,
+  });
+
+  // Label band (gold, around body)
+  const labelPts = [
+    [0.47, -1.40],
+    [0.47, -0.50],
+  ].map(([x, y]) => new THREE.Vector2(x, y));
+  const labelGeo = new THREE.LatheGeometry(labelPts, 72);
+  const labelMat = new THREE.MeshStandardMaterial({
+    color: 0xC4A84A,
+    roughness: 0.45,
+    metalness: 0.55,
+  });
+
+  // Cork cap
+  const corkPts = [
+    [0.17, 1.25],
+    [0.18, 1.60],
+  ].map(([x, y]) => new THREE.Vector2(x, y));
+  const corkGeo = new THREE.LatheGeometry(corkPts, 48);
+  const corkMat = new THREE.MeshStandardMaterial({
+    color: 0x8B6914,
+    roughness: 0.95,
+    metalness: 0.0,
+  });
+
+  // Ring mark on label
+  const ringGeo  = new THREE.TorusGeometry(0.28, 0.018, 6, 48);
+  const ringGeo2 = new THREE.TorusGeometry(0.20, 0.014, 6, 48);
+  const ringGeo3 = new THREE.TorusGeometry(0.12, 0.012, 6, 48);
+  const ringMat  = new THREE.MeshStandardMaterial({ color: 0x1a1a0a, roughness: 0.6 });
+
+  const bottle = new THREE.Mesh(bottleGeo, bodyMat);
+  const label  = new THREE.Mesh(labelGeo,  labelMat);
+  const cork   = new THREE.Mesh(corkGeo,   corkMat);
+  const ring1  = new THREE.Mesh(ringGeo,   ringMat);
+  const ring2  = new THREE.Mesh(ringGeo2,  ringMat);
+  const ring3  = new THREE.Mesh(ringGeo3,  ringMat);
+
+  // Place rings on label front face
+  [ring1, ring2, ring3].forEach(r => {
+    r.rotation.x = Math.PI / 2;
+    r.position.set(0, -0.95, 0.47);
+  });
+
+  const group = new THREE.Group();
+  group.add(bottle, label, cork, ring1, ring2, ring3);
+  scene.add(group);
+
+  // ── Lights ────────────────────────────────────────
+  scene.add(new THREE.AmbientLight(0xfff8e7, 0.5));
+
+  const key = new THREE.DirectionalLight(0xfff5d6, 2.0);
+  key.position.set(3, 5, 5);
+  scene.add(key);
+
+  const fill = new THREE.DirectionalLight(0xC4A84A, 0.6);
+  fill.position.set(-4, 0, 2);
+  scene.add(fill);
+
+  const rim = new THREE.PointLight(0xC4A84A, 1.2, 12);
+  rim.position.set(0, 2, -3);
+  scene.add(rim);
+
+  // ── Rotation + pour animation ─────────────────────
+  let angle = 0;
+  const speed = 0.012;
+  let pouring = false;
+  let pourProgress = 0;
+
+  function animate() {
+    requestAnimationFrame(animate);
+    angle += speed;
+
+    // Detect "front facing" (~every π rotation) → trigger pour
+    const frontFacing = Math.abs(Math.sin(angle)) < 0.15;
+    if (frontFacing && !pouring) {
+      pouring = true;
+      pourProgress = 0;
+    }
+    if (pouring) {
+      pourProgress += 0.04;
+      // Tilt bottle to pour
+      const tiltAngle = Math.sin(pourProgress * Math.PI) * 0.45;
+      group.rotation.z = tiltAngle;
+      if (pourProgress >= 1) { pouring = false; group.rotation.z = 0; }
+    }
+
+    group.rotation.y = angle;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', () => {
+    const nW = canvas.parentElement.offsetWidth || 320;
+    const nH = nW * 2;
+    renderer.setSize(nW, nH);
+    camera.aspect = nW / nH;
+    camera.updateProjectionMatrix();
+  });
+})();
 </script>
 
 </body>
