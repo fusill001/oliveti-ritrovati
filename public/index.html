@@ -93,6 +93,10 @@ body { font-family: 'GraphikX', 'Inter', sans-serif; background: var(--nero); }
 
 .wrapper_hero { position: relative; z-index: 10; }
 
+/* hero_section must NOT create a stacking context — bottle must float between bg and text */
+.hero_section { background: transparent !important; z-index: auto !important; }
+.jar_motion { z-index: 7 !important; } /* above grain_texture(5) background_hero, below wrapper_hero(10) */
+
 ::-webkit-scrollbar { width: 0px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: transparent; }
