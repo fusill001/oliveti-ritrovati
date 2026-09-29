@@ -43,7 +43,14 @@
   --tufo:    #9A9590;
   --bianco:  #d9d9d9;
   --bianco2: #f0ece4;
+  /* override HT Webflow CSS variable */
+  --brown:   #232323;
 }
+
+/* background_hero è position:fixed e usa --brown — va forzato */
+.background_hero    { background-color: var(--nero) !important; }
+.texture_background { opacity: 0.08 !important; }
+.grain_texture      { opacity: 0.6 !important; }
 
 /* ── BASE ─────────────────────────────────────── */
 body {
