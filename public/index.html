@@ -80,11 +80,18 @@ body {
 .blank_section      { background: var(--nero) !important; }
 
 /* ── NAV ──────────────────────────────────────── */
-.h-link               { border-color: var(--oro) !important; }
+.h-link               { border-color: var(--oro) !important; background: transparent !important; }
 .h-link:hover,
-.h-link.w--current    { background: var(--oro) !important; color: var(--nero) !important; }
-.h-link .txt_header   { color: var(--bianco) !important; }
+.h-link.w--current    { background: var(--oro) !important; }
+.h-link .txt_header,
+.h-link div           { color: var(--bianco) !important; }
+.h-link:hover .txt_header,
+.h-link:hover div,
+.h-link.w--current .txt_header,
+.h-link.w--current div { color: var(--nero) !important; }
 .txt_header           { color: var(--bianco) !important; }
+/* pulsante "ordina" nel nav — testo scuro su oro */
+.right_links .h-link[style*="background"] .txt_header { color: var(--nero) !important; }
 .mobile_link div,
 .f-link div           { color: var(--tufo) !important; }
 .s_small_link div     { color: var(--tufo) !important; }
@@ -224,11 +231,11 @@ body {
       <div class="logo_ht">
         <a aria-label="OLIVETI RITROVATI Home" href="#" class="logo_hungry_tiger w-inline-block w--current">
           <div style="display:flex;align-items:center;gap:10px;">
-            <img src="images/ring-mark.svg" loading="eager" alt="" aria-hidden="true" style="height:46px;width:46px;filter:brightness(0) saturate(100%) invert(67%) sepia(46%) saturate(500%) hue-rotate(7deg) brightness(90%) contrast(90%);"/>
-            <div style="line-height:1;">
-              <div style="font-family:'Salmond','Georgia',serif;font-size:13px;font-weight:700;letter-spacing:2.5px;color:#d9d9d9;text-transform:uppercase;">Oliveti</div>
-              <div style="font-family:'Salmond','Georgia',serif;font-size:13px;font-weight:700;letter-spacing:2.5px;color:#d9d9d9;text-transform:uppercase;">Ritrovati</div>
-              <div style="font-family:'GraphikX','Inter',sans-serif;font-size:6.5px;letter-spacing:3px;color:#C4A84A;margin-top:2px;">MATERA · BASILICATA</div>
+            <img src="images/ring-mark.svg" loading="eager" alt="" aria-hidden="true" style="height:46px;width:46px;"/>
+            <div style="line-height:1.05;">
+              <div class="h2" style="font-size:13px;font-weight:700;letter-spacing:2.5px;color:#d9d9d9 !important;text-transform:uppercase;margin:0;padding:0;">Oliveti</div>
+              <div class="h2" style="font-size:13px;font-weight:700;letter-spacing:2.5px;color:#d9d9d9 !important;text-transform:uppercase;margin:0;padding:0;">Ritrovati</div>
+              <div style="font-family:'Salmond','Georgia',serif;font-size:6.5px;font-weight:500;letter-spacing:3px;color:#C4A84A;margin-top:3px;text-transform:uppercase;">Matera · Basilicata</div>
             </div>
           </div>
         </a>
