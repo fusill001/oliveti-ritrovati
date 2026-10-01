@@ -446,7 +446,7 @@ body {
   <div class="jar_motion">
     <div class="box_motion">
       <div class="j_p">
-        <canvas id="bottle3d" aria-label="Bottiglia Oliveti Ritrovati — Olio Extravergine di Oliva Matera" style="width:100%;aspect-ratio:1/2;display:block;"></canvas>
+        <canvas id="bottle3d" aria-label="Bottiglia Oliveti Ritrovati — Olio Extravergine di Oliva Matera" style="width:100%;aspect-ratio:3/5;display:block;"></canvas>
       </div>
     </div>
   </div>
@@ -1067,7 +1067,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const size   = box.getSize(new THREE.Vector3());
     const maxDim = Math.max(size.x, size.y, size.z);
     group.position.sub(center);
-    group.scale.setScalar(1.4 / maxDim);
+    group.scale.setScalar(0.85 / maxDim);
     // Inclinazione fissa: bottiglia che versa verso il lettore
     group.rotation.z = 0.38;
     scene.add(group);
