@@ -61,24 +61,61 @@ Deploy cmd:     cd workspaces/oliveti-ritrovati && vercel --prod
 
 ---
 
-## PALETTE COLORI
+## LINEA GRAFICA
+
+### Palette colori (valori reali nel CSS)
 
 ```css
---nero:   #0A0806   /* sfondo principale */
---oro:    #B89A3E   /* accent primario */
---tufo:   #C8B89A   /* testo secondario, dettagli */
---bianco: #F5F0E8   /* testo principale */
---verde:  #2A4A2A   /* accent secondario */
+--nero:    #232323   /* sfondo principale — scelto dal cliente */
+--oro:     #C4A84A   /* accent primario — bottoni, cerchi, dettagli */
+--tufo:    #9A9590   /* testo secondario, caption */
+--bianco:  #d9d9d9   /* testo principale — scelto dal cliente */
+--bianco2: #f0ece4   /* testo alternativo su sfondo chiaro */
+
+/* Alias HT (non modificare) */
+--brown:      #232323
+--primary:    #C4A84A
+--dark-brown: #232323
 ```
 
----
+**Logica d'uso:**
+- Sfondo → `--nero` su tutte le sezioni (angle, unwrap, inside_sides, footer)
+- Testo corrente → `--bianco`
+- Caption/label → `--tufo`
+- CTA/pulsanti/accent → `--oro` su sfondo `--nero`, testo `--nero` su sfondo `--oro`
+- Sezione traditions → sfondo `--oro`, testo `--nero`
 
-## FONT
+### Tipografia
 
-```css
-Cinzel (weights: 400, 700, 900) — titoli hero, logo
-EB Garamond (weights: 400, 500, italic) — corpo testo, citazioni
 ```
+Salmond        — display, titoli h1/h2/h3, logo wordmark
+               weights: 500 (medium), 700 (bold)
+               file: fonts/Salmond-Bold.woff2, fonts/Salmond-Medium.woff2
+
+GraphikX       — corpo testo, UI, navigazione
+               weight: 500 (medium)
+               file: fonts/GraphikX-Medium.otf
+
+fallback stack: Salmond → 'Georgia', serif
+                GraphikX → 'Inter', sans-serif
+```
+
+**Logica d'uso:**
+- Tutti i `.h1 .h2 .h3 .like_h1 .h2_middle .footer_txt` → Salmond
+- Tutto il resto (`.base_txt`, nav, bottoni, caption) → GraphikX
+- Logo wordmark: "OLIVETI / RITROVATI" Salmond 700, 13px, tracking 2.5px, uppercase
+- Tagline logo: "MATERA · BASILICATA" Salmond 500, 6.5px, tracking 3px, colore `--oro`
+
+### Logo
+
+```
+Mark:     ring-mark.svg (6 ring paths, fill #C4A84A, viewBox 0 0 1254 1254)
+Wordmark: "OLIVETI / RITROVATI" — Salmond Bold, uppercase, tracking largo
+Tagline:  "MATERA · BASILICATA" — Salmond Medium, oro, molto piccolo sotto
+```
+
+File SVG ufficiale: `public/images/ring-mark.svg`
+File logo Canva: `/Users/emanuelebruno/Desktop/Desktop/SynologyDrive/OLIVETI RITROVATI/loghi/coop oliveti ritrovati.svg`
 
 ---
 
