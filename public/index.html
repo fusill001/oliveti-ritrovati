@@ -1056,8 +1056,8 @@ window.addEventListener('DOMContentLoaded', () => {
   scene.add(rim);
 
   let group = null;
-  let angle = 0;
-  const speed = 0.008;
+  // proxy GSAP-animabile
+  const rot = { x: 0 };
 
   const loader = new THREE.GLTFLoader();
   loader.load('bottiglia.glb', (gltf) => {
@@ -1068,17 +1068,28 @@ window.addEventListener('DOMContentLoaded', () => {
     const maxDim = Math.max(size.x, size.y, size.z);
     group.position.sub(center);
     group.scale.setScalar(0.85 / maxDim);
-    // Inclinazione fissa: bottiglia che versa verso il lettore
-    group.rotation.z = 0.38;
+    group.rotation.z = 0.38;  // tappo a sinistra, inclinazione fissa
+    group.rotation.x = rot.x; // partenza allineata con il proxy
     scene.add(group);
+
+    // Scroll-driven: bottiglia si versa verso il lettore scrollando
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.to(rot, {
+        x: Math.PI * 1.2,  // ~216° = versamento completo
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero_part',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.5,
+        },
+        onUpdate: () => { if (group) group.rotation.x = rot.x; },
+      });
+    }
   });
 
   function animate() {
     requestAnimationFrame(animate);
-    if (!group) return;
-    angle += speed;
-    // Rotazione sull'asse orizzontale (X) → tumble verso il lettore
-    group.rotation.x = angle;
     renderer.render(scene, camera);
   }
   animate();
