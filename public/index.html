@@ -1040,8 +1040,8 @@ window.addEventListener('DOMContentLoaded', () => {
   renderer.outputEncoding = THREE.sRGBEncoding;
 
   const scene  = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(28, W / H, 0.1, 100);
-  camera.position.set(0, 0, 7);
+  const camera = new THREE.PerspectiveCamera(22, W / H, 0.1, 100);
+  camera.position.set(0, 0, 9);
 
   // Lights
   scene.add(new THREE.AmbientLight(0xfff8e7, 0.7));
@@ -1057,8 +1057,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   let group = null;
   let angle = 0;
-  const speed = 0.010;
-  let pouring = false, pourProgress = 0;
+  const speed = 0.008;
 
   const loader = new THREE.GLTFLoader();
   loader.load('bottiglia.glb', (gltf) => {
@@ -1068,7 +1067,9 @@ window.addEventListener('DOMContentLoaded', () => {
     const size   = box.getSize(new THREE.Vector3());
     const maxDim = Math.max(size.x, size.y, size.z);
     group.position.sub(center);
-    group.scale.setScalar(4.5 / maxDim);
+    group.scale.setScalar(2.8 / maxDim);
+    // Inclinazione fissa: bottiglia che versa verso il lettore
+    group.rotation.z = -0.38;
     scene.add(group);
   });
 
@@ -1076,16 +1077,8 @@ window.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(animate);
     if (!group) return;
     angle += speed;
-
-    const frontFacing = Math.abs(Math.sin(angle)) < 0.12;
-    if (frontFacing && !pouring) { pouring = true; pourProgress = 0; }
-    if (pouring) {
-      pourProgress += 0.035;
-      group.rotation.z = Math.sin(pourProgress * Math.PI) * 0.4;
-      if (pourProgress >= 1) { pouring = false; group.rotation.z = 0; }
-    }
-
-    group.rotation.y = angle;
+    // Rotazione sull'asse orizzontale (X) → tumble verso il lettore
+    group.rotation.x = angle;
     renderer.render(scene, camera);
   }
   animate();
