@@ -126,42 +126,46 @@ body {
 .number_txt                  { color: var(--nero) !important; }
 .circle_inside.dark_brown    { background: rgba(35,35,35,.15) !important; }
 
-/* ── BOTTLE / JAR ─────────────────────────────── */
+/* ── BOTTLE / JAR — valori esatti da Hungry Tiger ─ */
 .jar_motion {
   pointer-events: none;
-  position: fixed   !important;
-  top: 0  !important;
-  left: 0 !important;
-  width: 100vw      !important;
-  height: 100dvh    !important;
-  display: flex     !important;
-  align-items: center     !important;
+  z-index: 50 !important;
   justify-content: center !important;
-  /* sopra wrapper_hero z-index:10 — pointer-events:none evita blocchi clic */
-  z-index: 12       !important;
-  overflow: visible !important;
+  align-items: center !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex !important;
+  position: fixed !important;
+  inset: 0% !important;
+  overflow: hidden !important;
 }
-/* Desktop: bottiglia centrata, sopra il testo (z-index 12, pointer-events none) */
+/* Desktop */
 .box_motion {
-  width: clamp(220px, 32vw, 460px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 38em;
+  height: 41em;
+  margin: 0;
 }
-/* Mobile: occupa buona parte dello schermo */
-@media (max-width: 767px) {
-  .box_motion { width: 78vw; }
+.j_p {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.5) translateY(20em);
 }
 .j_p canvas {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  filter: drop-shadow(0 0 60px rgba(196,168,74,.35));
-  animation: jar_enter 1.4s cubic-bezier(.34,1.56,.64,1) .2s both;
+  filter: drop-shadow(0 0 80px rgba(196,168,74,.4));
 }
-@keyframes jar_enter {
-  from { opacity: 0; transform: scale(.6) translateY(40px); }
-  to   { opacity: 1; transform: scale(1)  translateY(0); }
+/* Mobile — box copre metà viewport, centrato verticalmente */
+@media (max-width: 767px) {
+  .box_motion {
+    width: 100vw;
+    height: 50vh;
+    margin-bottom: 5.3em;
+    transform: translateY(5em);
+  }
+  .j_p { transform: none; }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -462,7 +466,7 @@ document.addEventListener('touchmove', function(e) {
         <div id="bottle-loader" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
           <div style="width:32px;height:32px;border:2px solid rgba(196,168,74,.25);border-top-color:#C4A84A;border-radius:50%;animation:spin .8s linear infinite;"></div>
         </div>
-        <canvas id="bottle3d" aria-label="Bottiglia Oliveti Ritrovati — Olio Extravergine di Oliva Matera" style="width:100%;aspect-ratio:4/7;display:block;opacity:0;transition:opacity .6s;"></canvas>
+        <canvas id="bottle3d" aria-label="Bottiglia Oliveti Ritrovati — Olio Extravergine di Oliva Matera" style="width:100%;height:100%;display:block;opacity:0;transition:opacity .6s;"></canvas>
       </div>
     </div>
   </div>
@@ -1043,12 +1047,11 @@ window.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('bottle3d');
   if (!canvas) return;
 
-  const W = canvas.parentElement.offsetWidth || 320;
-  const H = W * 2;
-  canvas.style.width  = W + 'px';
-  canvas.style.height = H + 'px';
-
   const isMobile = window.innerWidth < 768;
+  const container = canvas.parentElement; // .j_p
+  const W = container.offsetWidth  || (isMobile ? window.innerWidth : 608);
+  const H = container.offsetHeight || (isMobile ? window.innerHeight * 0.5 : 656);
+
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: !isMobile });
   renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 1.5));
   renderer.setSize(W, H);
@@ -1124,8 +1127,8 @@ window.addEventListener('DOMContentLoaded', () => {
   animate();
 
   window.addEventListener('resize', () => {
-    const nW = canvas.parentElement.offsetWidth || 320;
-    const nH = nW * 2;
+    const nW = container.offsetWidth  || window.innerWidth;
+    const nH = container.offsetHeight || window.innerHeight;
     renderer.setSize(nW, nH);
     camera.aspect = nW / nH;
     camera.updateProjectionMatrix();
