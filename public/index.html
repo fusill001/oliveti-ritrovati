@@ -141,24 +141,16 @@ body {
   z-index: 12       !important;
   overflow: visible !important;
 }
-/* Desktop: bottiglia nella metà destra, titolo occupa la sinistra */
+/* Desktop: bottiglia centrata, sopra il testo (z-index 12, pointer-events none) */
 .box_motion {
-  width: clamp(200px, 28vw, 400px);
-  margin-left: 42vw;
+  width: clamp(220px, 32vw, 460px);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-/* Mobile: bottiglia centrata, dimensione media */
+/* Mobile: occupa buona parte dello schermo */
 @media (max-width: 767px) {
-  .box_motion {
-    width: 62vw;
-    margin-left: 0;
-  }
-  .jar_motion {
-    align-items: center !important;
-    justify-content: center !important;
-  }
+  .box_motion { width: 78vw; }
 }
 .j_p canvas {
   width: 100%;
@@ -385,6 +377,12 @@ body {
 </head>
 
 <body>
+<script>
+// Blocca pinch-zoom su iOS (ignora user-scalable=no)
+document.addEventListener('touchmove', function(e) {
+  if (e.touches.length > 1) e.preventDefault();
+}, { passive: false });
+</script>
 
 <header class="header">
   <div class="wrapper_header">
@@ -464,7 +462,7 @@ body {
         <div id="bottle-loader" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
           <div style="width:32px;height:32px;border:2px solid rgba(196,168,74,.25);border-top-color:#C4A84A;border-radius:50%;animation:spin .8s linear infinite;"></div>
         </div>
-        <canvas id="bottle3d" aria-label="Bottiglia Oliveti Ritrovati — Olio Extravergine di Oliva Matera" style="width:100%;aspect-ratio:3/5;display:block;opacity:0;transition:opacity .6s;"></canvas>
+        <canvas id="bottle3d" aria-label="Bottiglia Oliveti Ritrovati — Olio Extravergine di Oliva Matera" style="width:100%;aspect-ratio:4/7;display:block;opacity:0;transition:opacity .6s;"></canvas>
       </div>
     </div>
   </div>
@@ -1086,7 +1084,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const size   = box.getSize(new THREE.Vector3());
     const maxDim = Math.max(size.x, size.y, size.z);
     group.position.sub(center);
-    group.scale.setScalar(0.85 / maxDim);
+    group.scale.setScalar(2.2 / maxDim);
     group.rotation.z = 0.38;
     group.rotation.x = rot.x;
     scene.add(group);
