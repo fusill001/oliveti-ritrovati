@@ -108,14 +108,18 @@ fallback stack: Salmond → 'Georgia', serif
 
 ### Logo
 
+**NON creare loghi — usare sempre e solo il file SVG ufficiale caricato dal cliente.**
+
 ```
-Mark:     ring-mark.svg (6 ring paths, fill #C4A84A, viewBox 0 0 1254 1254)
-Wordmark: "OLIVETI / RITROVATI" — Salmond Bold, uppercase, tracking largo
-Tagline:  "MATERA · BASILICATA" — Salmond Medium, oro, molto piccolo sotto
+File ufficiale: public/images/ring-mark.svg
+Sorgente:       /Users/emanuelebruno/Desktop/Desktop/SynologyDrive/OLIVETI RITROVATI/loghi/coop oliveti ritrovati.svg
+Fill attuale:   #C4A84A (modificato da #B89A3E con sed)
 ```
 
-File SVG ufficiale: `public/images/ring-mark.svg`
-File logo Canva: `/Users/emanuelebruno/Desktop/Desktop/SynologyDrive/OLIVETI RITROVATI/loghi/coop oliveti ritrovati.svg`
+Nel sito il logo è composto da:
+- `<img src="images/ring-mark.svg">` — il mark SVG ufficiale
+- Due div `.h2` con testo "OLIVETI" / "RITROVATI" in Salmond
+- Una riga tagline "MATERA · BASILICATA" in Salmond oro
 
 ---
 
