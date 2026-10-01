@@ -11,7 +11,7 @@
 <meta property="og:image:height" content="630"/>
 <meta property="og:type" content="website"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 <link rel="canonical" href="https://oliveti-ritrovati.vercel.app/"/>
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style>
@@ -146,6 +146,15 @@ body {
   align-items: center;
   justify-content: center;
 }
+/* Desktop: bottiglia a destra, non coperta dal titolo */
+@media (min-width: 768px) {
+  .jar_motion { justify-content: flex-end !important; padding-right: 8vw !important; }
+}
+/* Mobile: bottiglia grande, centrata in basso */
+@media (max-width: 767px) {
+  .box_motion { width: 80vw; }
+  .jar_motion { align-items: flex-end !important; padding-bottom: 22vh !important; }
+}
 .j_p canvas {
   width: 100%;
   height: auto;
@@ -157,6 +166,7 @@ body {
   from { opacity: 0; transform: scale(.6) translateY(40px); }
   to   { opacity: 1; transform: scale(1)  translateY(0); }
 }
+@keyframes spin { to { transform: rotate(360deg); } }
 
 /* ── HERO ─────────────────────────────────────── */
 .wrapper_hero { position: relative; z-index: 10; }
@@ -445,8 +455,11 @@ body {
 <section class="hero_part">
   <div class="jar_motion">
     <div class="box_motion">
-      <div class="j_p">
-        <canvas id="bottle3d" aria-label="Bottiglia Oliveti Ritrovati — Olio Extravergine di Oliva Matera" style="width:100%;aspect-ratio:3/5;display:block;"></canvas>
+      <div class="j_p" style="position:relative;">
+        <div id="bottle-loader" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <div style="width:32px;height:32px;border:2px solid rgba(196,168,74,.25);border-top-color:#C4A84A;border-radius:50%;animation:spin .8s linear infinite;"></div>
+        </div>
+        <canvas id="bottle3d" aria-label="Bottiglia Oliveti Ritrovati — Olio Extravergine di Oliva Matera" style="width:100%;aspect-ratio:3/5;display:block;opacity:0;transition:opacity .6s;"></canvas>
       </div>
     </div>
   </div>
@@ -1068,9 +1081,13 @@ window.addEventListener('DOMContentLoaded', () => {
     const maxDim = Math.max(size.x, size.y, size.z);
     group.position.sub(center);
     group.scale.setScalar(0.85 / maxDim);
-    group.rotation.z = 0.38;  // tappo a sinistra, inclinazione fissa
-    group.rotation.x = rot.x; // partenza allineata con il proxy
+    group.rotation.z = 0.38;
+    group.rotation.x = rot.x;
     scene.add(group);
+    // Mostra canvas, nascondi spinner
+    canvas.style.opacity = '1';
+    const loader_el = document.getElementById('bottle-loader');
+    if (loader_el) loader_el.style.display = 'none';
 
     // Scroll-driven: bottiglia si versa verso il lettore scrollando
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
