@@ -137,23 +137,28 @@ body {
   display: flex     !important;
   align-items: center     !important;
   justify-content: center !important;
-  z-index: 7        !important;
+  /* sopra wrapper_hero z-index:10 — pointer-events:none evita blocchi clic */
+  z-index: 12       !important;
   overflow: visible !important;
 }
+/* Desktop: bottiglia nella metà destra, titolo occupa la sinistra */
 .box_motion {
-  width: clamp(260px, 40vw, 540px);
+  width: clamp(200px, 28vw, 400px);
+  margin-left: 42vw;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-/* Desktop: bottiglia a destra, non coperta dal titolo */
-@media (min-width: 768px) {
-  .jar_motion { justify-content: flex-end !important; padding-right: 8vw !important; }
-}
-/* Mobile: bottiglia grande, centrata in basso */
+/* Mobile: bottiglia centrata, dimensione media */
 @media (max-width: 767px) {
-  .box_motion { width: 80vw; }
-  .jar_motion { align-items: flex-end !important; padding-bottom: 22vh !important; }
+  .box_motion {
+    width: 62vw;
+    margin-left: 0;
+  }
+  .jar_motion {
+    align-items: center !important;
+    justify-content: center !important;
+  }
 }
 .j_p canvas {
   width: 100%;
@@ -1045,8 +1050,9 @@ window.addEventListener('DOMContentLoaded', () => {
   canvas.style.width  = W + 'px';
   canvas.style.height = H + 'px';
 
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  const isMobile = window.innerWidth < 768;
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: !isMobile });
+  renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 1.5));
   renderer.setSize(W, H);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.4;
@@ -1105,10 +1111,18 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  let rafId = null;
+  let visible = true;
   function animate() {
-    requestAnimationFrame(animate);
+    if (!visible) { rafId = null; return; }
+    rafId = requestAnimationFrame(animate);
     renderer.render(scene, camera);
   }
+  // Pausa quando la bottiglia esce dallo schermo
+  new IntersectionObserver(([e]) => {
+    visible = e.isIntersecting;
+    if (visible && !rafId) animate();
+  }, { threshold: 0 }).observe(canvas);
   animate();
 
   window.addEventListener('resize', () => {
