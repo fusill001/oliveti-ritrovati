@@ -141,7 +141,7 @@ body {
   overflow: visible !important;
 }
 .box_motion {
-  width: clamp(140px, 18vw, 260px);
+  width: clamp(260px, 40vw, 540px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1067,7 +1067,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const size   = box.getSize(new THREE.Vector3());
     const maxDim = Math.max(size.x, size.y, size.z);
     group.position.sub(center);
-    group.scale.setScalar(2.8 / maxDim);
+    group.scale.setScalar(1.4 / maxDim);
     // Inclinazione fissa: bottiglia che versa verso il lettore
     group.rotation.z = 0.38;
     scene.add(group);
