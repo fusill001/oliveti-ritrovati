@@ -1019,8 +1019,9 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/loaders/GLTFLoader.js"></script>
 <script>
-// ── THREE.JS BOTTIGLIA 3D ─────────────────────────────────────
+// ── THREE.JS BOTTIGLIA 3D (GLB) ───────────────────────────────
 (function () {
   if (typeof THREE === 'undefined') return;
   const canvas = document.getElementById('bottle3d');
@@ -1028,128 +1029,59 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const W = canvas.parentElement.offsetWidth || 320;
   const H = W * 2;
-  canvas.width  = W * window.devicePixelRatio;
-  canvas.height = H * window.devicePixelRatio;
   canvas.style.width  = W + 'px';
   canvas.style.height = H + 'px';
 
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(W, H);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.2;
+  renderer.toneMappingExposure = 1.4;
+  renderer.outputEncoding = THREE.sRGBEncoding;
 
   const scene  = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(28, W / H, 0.1, 100);
   camera.position.set(0, 0, 7);
 
-  // ── Bottle profile (lathe around Y axis) ──────────
-  const pts = [
-    [0.00, -2.60], // bottom flat
-    [0.34, -2.55], // base edge
-    [0.42, -2.30], // body start
-    [0.46, -1.50], // widest
-    [0.44, -0.40], // shoulder
-    [0.22,  0.30], // neck bottom
-    [0.17,  0.80], // neck
-    [0.15,  1.20], // top neck
-    [0.18,  1.28], // cork rim
-    [0.18,  1.60], // cork top
-    [0.00,  1.62], // center top
-  ].map(([x, y]) => new THREE.Vector2(x, y));
-
-  const bottleGeo = new THREE.LatheGeometry(pts, 72);
-
-  // ── Materials ──────────────────────────────────────
-  const bodyMat = new THREE.MeshStandardMaterial({
-    color: 0x0d0d0d,
-    roughness: 0.85,
-    metalness: 0.08,
-  });
-
-  // Label band (gold, around body)
-  const labelPts = [
-    [0.47, -1.40],
-    [0.47, -0.50],
-  ].map(([x, y]) => new THREE.Vector2(x, y));
-  const labelGeo = new THREE.LatheGeometry(labelPts, 72);
-  const labelMat = new THREE.MeshStandardMaterial({
-    color: 0xC4A84A,
-    roughness: 0.45,
-    metalness: 0.55,
-  });
-
-  // Cork cap
-  const corkPts = [
-    [0.17, 1.25],
-    [0.18, 1.60],
-  ].map(([x, y]) => new THREE.Vector2(x, y));
-  const corkGeo = new THREE.LatheGeometry(corkPts, 48);
-  const corkMat = new THREE.MeshStandardMaterial({
-    color: 0x8B6914,
-    roughness: 0.95,
-    metalness: 0.0,
-  });
-
-  // Ring mark on label
-  const ringGeo  = new THREE.TorusGeometry(0.28, 0.018, 6, 48);
-  const ringGeo2 = new THREE.TorusGeometry(0.20, 0.014, 6, 48);
-  const ringGeo3 = new THREE.TorusGeometry(0.12, 0.012, 6, 48);
-  const ringMat  = new THREE.MeshStandardMaterial({ color: 0x1a1a0a, roughness: 0.6 });
-
-  const bottle = new THREE.Mesh(bottleGeo, bodyMat);
-  const label  = new THREE.Mesh(labelGeo,  labelMat);
-  const cork   = new THREE.Mesh(corkGeo,   corkMat);
-  const ring1  = new THREE.Mesh(ringGeo,   ringMat);
-  const ring2  = new THREE.Mesh(ringGeo2,  ringMat);
-  const ring3  = new THREE.Mesh(ringGeo3,  ringMat);
-
-  // Place rings on label front face
-  [ring1, ring2, ring3].forEach(r => {
-    r.rotation.x = Math.PI / 2;
-    r.position.set(0, -0.95, 0.47);
-  });
-
-  const group = new THREE.Group();
-  group.add(bottle, label, cork, ring1, ring2, ring3);
-  scene.add(group);
-
-  // ── Lights ────────────────────────────────────────
-  scene.add(new THREE.AmbientLight(0xfff8e7, 0.5));
-
-  const key = new THREE.DirectionalLight(0xfff5d6, 2.0);
+  // Lights
+  scene.add(new THREE.AmbientLight(0xfff8e7, 0.7));
+  const key = new THREE.DirectionalLight(0xfff5d6, 2.2);
   key.position.set(3, 5, 5);
   scene.add(key);
-
-  const fill = new THREE.DirectionalLight(0xC4A84A, 0.6);
+  const fill = new THREE.DirectionalLight(0xC4A84A, 0.5);
   fill.position.set(-4, 0, 2);
   scene.add(fill);
-
-  const rim = new THREE.PointLight(0xC4A84A, 1.2, 12);
-  rim.position.set(0, 2, -3);
+  const rim = new THREE.PointLight(0xC4A84A, 1.0, 14);
+  rim.position.set(0, 3, -3);
   scene.add(rim);
 
-  // ── Rotation + pour animation ─────────────────────
+  let group = null;
   let angle = 0;
-  const speed = 0.012;
-  let pouring = false;
-  let pourProgress = 0;
+  const speed = 0.010;
+  let pouring = false, pourProgress = 0;
+
+  const loader = new THREE.GLTFLoader();
+  loader.load('bottiglia.glb', (gltf) => {
+    group = gltf.scene;
+    const box    = new THREE.Box3().setFromObject(group);
+    const center = box.getCenter(new THREE.Vector3());
+    const size   = box.getSize(new THREE.Vector3());
+    const maxDim = Math.max(size.x, size.y, size.z);
+    group.position.sub(center);
+    group.scale.setScalar(4.5 / maxDim);
+    scene.add(group);
+  });
 
   function animate() {
     requestAnimationFrame(animate);
+    if (!group) return;
     angle += speed;
 
-    // Detect "front facing" (~every π rotation) → trigger pour
-    const frontFacing = Math.abs(Math.sin(angle)) < 0.15;
-    if (frontFacing && !pouring) {
-      pouring = true;
-      pourProgress = 0;
-    }
+    const frontFacing = Math.abs(Math.sin(angle)) < 0.12;
+    if (frontFacing && !pouring) { pouring = true; pourProgress = 0; }
     if (pouring) {
-      pourProgress += 0.04;
-      // Tilt bottle to pour
-      const tiltAngle = Math.sin(pourProgress * Math.PI) * 0.45;
-      group.rotation.z = tiltAngle;
+      pourProgress += 0.035;
+      group.rotation.z = Math.sin(pourProgress * Math.PI) * 0.4;
       if (pourProgress >= 1) { pouring = false; group.rotation.z = 0; }
     }
 
