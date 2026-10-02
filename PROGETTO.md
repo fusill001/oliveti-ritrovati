@@ -271,14 +271,21 @@ Percorso: `/Users/emanuelebruno/Desktop/Desktop/SynologyDrive/PERCORSI RITROVATI
 - ✅ Facebook aggiunto: mobile menu + footer + sezione contatti
 - ✅ Export loghi PNG funzionante: pipeline SVG → text-to-paths (fonttools) → rsvg-convert
 - ✅ Reel overlay 1080×600px consegnati (bianco + oro su trasparente)
-- ✅ Pushato su GitHub: commit 8f8f4bd
+- ✅ Sistema outreach B2B completo: scraper.py + enrich_emails.py + send_emails.py + dashboard.py
+- ✅ Template email prof Linzalone (ristorante + enoteca) + template WhatsApp (ristorante + hotel)
+- ✅ 32 query scraper: Matera città + Provincia + Altamura + Puglia confinante
+- ✅ Gmail SMTP configurato con App Password in outreach/.env (gitignored)
+- ✅ Landing Gift Box Natale live: oliveti-ritrovati.vercel.app/natale
+  - Countdown al 30 novembre, 3 box (Cucina €18 / Tavola €35 / Premio €50), CTA WhatsApp
+- ✅ Pushato su GitHub: commit 4e896a5
 
 ### Prossimi step
-1. **Outreach B2B** — costruire `outreach/` con scraper Google Maps + templates email/WA + sender SMTP
-2. **WhatsApp Business** — profilo completo prof Linzalone con catalogo prodotti
-3. **Instagram** — 9 foto curate per lancio account (dagli archivi già disponibili)
-4. **Pre-ordini Gift Box Natale** — landing one-pager separata o sezione dedicata nel sito
-5. **Evento Novellolio** — pianificare con Slow Food Matera per novembre
+1. **Avvia scraper** → `cd workspaces/oliveti-ritrovati/outreach && uv run python scraper.py`
+2. **Arricchisci email** → `uv run python enrich_emails.py` (dopo lo scraper)
+3. **Test invio** → `uv run python send_emails.py --preview --limit 5`
+4. **WhatsApp Business** — profilo completo prof Linzalone con catalogo prodotti
+5. **Instagram** — 9 foto curate per lancio account (dagli archivi già disponibili)
+6. **Evento Novellolio** — pianificare con Slow Food Matera per novembre
 
 ### To clarify con il prof
 - Prezzi definitivi per le 3 linee (cucina/tavola/premio)
