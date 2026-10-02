@@ -169,8 +169,9 @@ Fallback:   Salmond → Georgia, serif | GraphikX → Inter, sans-serif
 ### Logo
 
 **Logo ufficiale attuale (usare sempre):**
-- SVG mark: `public/images/ring-mark.svg` (anelli concentrici, fill `#C4A84A`)
-- Sorgente: `/Users/emanuelebruno/Desktop/Desktop/SynologyDrive/OLIVETI RITROVATI/loghi/coop oliveti ritrovati.svg`
+- SVG mark usato nel sito: `public/images/ring-mark.svg` (anelli concentrici, fill `#C4A84A`)
+- SVG sorgenti in `brand/logo/` (varie varianti: mark, horizontal, stacked)
+- PNG esportati in `brand/exports/` (1x/2x/3x, varianti colore)
 
 **Idee logo alternative (da sviluppare con Claude Design):**
 - Venature di un tronco: `/Users/emanuelebruno/Downloads/foto_oliveti_ritrovati_logo`
