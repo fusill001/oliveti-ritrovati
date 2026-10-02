@@ -1,18 +1,34 @@
 # PROGETTO BIBBIA — OLIVETI RITROVATI
 
 > File di riferimento permanente. Leggi questo prima di toccare qualsiasi cosa.
+> Aggiornato: 2026-10-02
+
+---
+
+## VISION
+
+**Obiettivo finale:** diventare il riferimento assoluto per l'olio materano — produzione, cultura, vendita, distribuzione, eventi, turismo enogastronomico. Un'azienda completa, non solo un brand.
+
+Tre asset narrativi inarrivabili dai competitor:
+1. **La storia del nonno** e il frantoio storico in Via Casalnuovo (Sassi) dal 1959 — autenticità impossibile da replicare
+2. **3000 olivi recuperati dall'abbandono** — impatto che funziona su media, ristoratori, gifting aziendale
+3. **Tarantina caratterizzata geneticamente nel 2026** — primato scientifico assoluto. Nessun produttore lucano può dire "la nostra varietà è stata identificata per la prima volta in assoluto"
+
+**I Sotterranei** — progetto top secret. Olio prodotto a ottobre/novembre 2026, conservato letteralmente sottoterra, da lanciare ad aprile 2027 quando gli oli degli altri saranno già stanco. Non menzionare pubblicamente. Costruire solo l'attesa silenziosa.
 
 ---
 
 ## BRAND
 
-**Nome corretto:** OLIVETI RITROVATI (plurale, sempre così — mai "OLIVETO RITROVATO")  
-**Forma breve:** OLIVETI RITROVATI  
-**Tagline:** L'olio ritrovato di Matera  
-**Sito live:** https://oliveti-ritrovati.vercel.app  
-**Instagram:** @olivetiritrovati  
-**Email:** olivetiritrovatimatera@gmail.com  
-**WhatsApp ordini:** +39 339 379 2491 → `https://wa.me/393393792491`
+**Nome corretto:** OLIVETI RITROVATI (plurale, sempre così — mai "OLIVETO RITROVATO")
+**Forma breve:** OLIVETI RITROVATI
+**Tagline:** L'olio ritrovato di Matera
+**Sito live:** https://oliveti-ritrovati.vercel.app
+**Instagram:** @olivetiritrovati
+**Facebook:** https://www.facebook.com/profile.php?id=61594858266093
+**Email:** olivetiritrovatimatera@gmail.com
+**WhatsApp ordini:** +39 339 379 2491 (Prof. Linzalone) → `https://wa.me/393393792491`
+**Percorsi Ritrovati** = progetto collegato (esperienze turistiche) — solo un link, non il brand qui
 
 ---
 
@@ -24,7 +40,7 @@ Società Cooperativa OLIVETI RITROVATI — costola della Comunità Slow Food OLI
 
 **Missione:** salvare ~3000 olivi centenari abbandonati nella campagna materana. Comodato d'uso con i proprietari, cura colturale, produzione dell'OLIO RITROVATO.
 
-**Varietà:** Tarantina (amara, polifferolica, matura a metà novembre) + Ghiannara/Gnannara (delicata, precoce, matura ottobre).
+**Varietà:** Tarantina (amara, poliferolica, matura a metà novembre) + Ghiannara/Gnannara (delicata, precoce, matura ottobre).
 
 **Metodo:** 0 fertilizzanti chimici, 0 fitofarmaci, potatura a Vaso Policonico, trinciatura residui, molitura entro 8 ore dalla raccolta.
 
@@ -34,12 +50,74 @@ Società Cooperativa OLIVETI RITROVATI — costola della Comunità Slow Food OLI
 
 ---
 
-## PRODOTTO & PREZZI
+## PRODOTTI & PREZZI
 
-- **Bottiglia 500ml:** €10
-- Produzione 2022: 250L in bottiglie (≈500 bottiglie), 350L in lattine
-- Entrate stimate: ~€6.000
-- Quantità limitata ogni anno
+**Tre linee distinte** (oli effettivamente diversi per varietà/raccolta):
+
+| Linea | Prodotto | Formato | Note |
+|-------|----------|---------|------|
+| **Cucina** | Blend Tradizionale | 500ml, 1L, bag-in-box 5L | Mix varietale, uso quotidiano |
+| **Tavola** | Ghiannara | 500ml | Delicata, precoce, raccolta ottobre |
+| **Premio** | Tarantina Monovarietale | 500ml, 750ml | Amara, poliferolica, raccolta novembre. Primato genetico |
+| **Bonus** | Gift Box Natale | 2×500ml + cartoncino storia | 35-50€. Pre-ordini novembre per consegna natale |
+| **Sfuso** | Bag-in-box/Tanica 5L | 5L | Solo locale, B2B ristoranti |
+| **Extra** | Olive al quintale, caciocavallo, salumi, prodotti locali | — | B2B e gift |
+| **Secret** | I Sotterranei | TBD | Lancio aprile 2027. TOP SECRET |
+
+**Prezzi attuali (precedente stagione):** 500ml → €10
+
+---
+
+## PIANO 90 GIORNI (ottobre–dicembre 2026)
+
+> Siamo al 2 ottobre 2026. Raccolta olive tra 2-4 settimane. Novello pronto novembre. Natale tra 84 giorni.
+
+### Fase 1 — Ottobre: Costruire l'attesa
+- [ ] WhatsApp Business profilo completo (foto prof, catalogo base, link diretto)
+- [ ] Instagram: 9 foto curate (olivi San Giacomo, prof al lavoro, frantoio nonno), bio con link WA
+- [ ] Outreach B2B diretto: 10 ristoranti Matera in persona (bottiglia in mano, non email)
+- [ ] Pre-ordini Gift Box Natale aperti (35-50€, due bottiglie 500ml + storia)
+- [ ] Landing page minima (già live su oliveti-ritrovati.vercel.app)
+
+### Fase 2 — Novembre: La raccolta è il contenuto
+- [ ] Documentare ogni fase raccolta→frangitura→imbottigliamento (foto/video per social)
+- [ ] Evento Novellolio con Slow Food Matera — in un ristorante partner
+- [ ] Invitare giornalisti locali, food blogger, ristoratori all'evento
+- [ ] Email list: raccogliere contatti da evento + ordini WA + follower IG
+- [ ] Formalizzare accordi B2B con i ristoratori che hanno provato il prodotto
+
+### Fase 3 — Dicembre: Push natalizio
+- [ ] Campagna IG/email gift box Natale (regali aziendali, privati)
+- [ ] Contratti fornitura continuativa con i B2B
+- [ ] Valutare dati: quante bottiglie vendute, a chi, a che prezzo → pianificare e-commerce
+- [ ] Avviare silenziosamente "I Sotterranei" (produzione, stoccaggio, comunicazione zero)
+
+---
+
+## TARGET B2B
+
+- Ristoranti (piccoli e grandi, Matera e dintorni)
+- Supermercati locali e GDO
+- Negozi alimentari, gastronomie, enoteche
+- Agriturismi, B&B, hotel
+- Attività commerciali per gifting aziendale
+
+**Flusso commerciale:**
+1. Primo contatto email — presentazione, storia, prodotto
+2. Invito newsletter
+3. CTA: "Chiamiamo il prof per organizzare fornitura/degustazione/serata"
+4. Follow-up contenuti valore (stagionalità, ricette, cultura olearia)
+
+**Da costruire:** `outreach/` — scraper Google Maps, arricchimento email, templates, SMTP sender, contacts.csv con tracking stato (nuovo/inviato/risposto)
+
+---
+
+## EVENTI & PARTNERSHIP
+
+- **Novellolio** — serate degustazione con Slow Food Matera, novembre
+- Degustazioni in ristoranti partner
+- Mercati locali con stand + tanica sfuso
+- Gadget: bottigliette 50ml/100ml da omaggio
 
 ---
 
@@ -50,7 +128,8 @@ Tipo:           Static HTML — NESSUN framework
 Deploy:         Vercel (outputDirectory: "public")
 File principale: public/index.html
 Animazioni:     GSAP 3.12.5 + ScrollTrigger (cdnjs CDN)
-Font:           Cinzel (titoli) + EB Garamond (corpo) — Google Fonts
+Three.js:       r134 — bottiglia 3D GLB con rotazione scroll-driven
+Font:           Salmond (Bold/Medium woff2 + bold.ttf) + GraphikX Medium otf
 Deploy cmd:     cd workspaces/oliveti-ritrovati && vercel --prod
 ```
 
@@ -63,79 +142,80 @@ Deploy cmd:     cd workspaces/oliveti-ritrovati && vercel --prod
 
 ## LINEA GRAFICA
 
-### Palette colori (valori reali nel CSS)
+### Palette colori
 
 ```css
---nero:    #232323   /* sfondo principale — scelto dal cliente */
+--nero:    #232323   /* sfondo principale */
 --oro:     #C4A84A   /* accent primario — bottoni, cerchi, dettagli */
 --tufo:    #9A9590   /* testo secondario, caption */
---bianco:  #d9d9d9   /* testo principale — scelto dal cliente */
+--bianco:  #d9d9d9   /* testo principale */
 --bianco2: #f0ece4   /* testo alternativo su sfondo chiaro */
-
-/* Alias HT (non modificare) */
---brown:      #232323
---primary:    #C4A84A
---dark-brown: #232323
 ```
 
-**Logica d'uso:**
-- Sfondo → `--nero` su tutte le sezioni (angle, unwrap, inside_sides, footer)
-- Testo corrente → `--bianco`
-- Caption/label → `--tufo`
-- CTA/pulsanti/accent → `--oro` su sfondo `--nero`, testo `--nero` su sfondo `--oro`
-- Sezione traditions → sfondo `--oro`, testo `--nero`
+**Logica:** sfondo → `--nero` su tutte le sezioni | testo → `--bianco` | caption → `--tufo` | CTA/accent → `--oro` | sezione traditions → sfondo `--oro`, testo `--nero`
+
+**Reference visiva:** Fratelli Carbone (https://fratellicarbone.it/) — nero profondo, premium, sobrio
+**Linea grafica brand** (logo, sito, social): sobria, nera, premium
+**Linea grafica prodotti/etichette**: può variare per varietà e stagione, anche esuberante
 
 ### Tipografia
 
 ```
-Salmond        — display, titoli h1/h2/h3, logo wordmark
-               weights: 500 (medium), 700 (bold)
-               file: fonts/Salmond-Bold.woff2, fonts/Salmond-Medium.woff2
-
-GraphikX       — corpo testo, UI, navigazione
-               weight: 500 (medium)
-               file: fonts/GraphikX-Medium.otf
-
-fallback stack: Salmond → 'Georgia', serif
-                GraphikX → 'Inter', sans-serif
+Salmond     — display, titoli h1/h2/h3, logo wordmark (500 medium, 700 bold)
+GraphikX    — corpo testo, UI, navigazione (500 medium)
+Fallback:   Salmond → Georgia, serif | GraphikX → Inter, sans-serif
 ```
-
-**Logica d'uso:**
-- Tutti i `.h1 .h2 .h3 .like_h1 .h2_middle .footer_txt` → Salmond
-- Tutto il resto (`.base_txt`, nav, bottoni, caption) → GraphikX
-- Logo wordmark: "OLIVETI / RITROVATI" Salmond 700, 13px, tracking 2.5px, uppercase
-- Tagline logo: "MATERA · BASILICATA" Salmond 500, 6.5px, tracking 3px, colore `--oro`
 
 ### Logo
 
-**NON creare loghi — usare sempre e solo il file SVG ufficiale caricato dal cliente.**
+**Logo ufficiale attuale (usare sempre):**
+- SVG mark: `public/images/ring-mark.svg` (anelli concentrici, fill `#C4A84A`)
+- Sorgente: `/Users/emanuelebruno/Desktop/Desktop/SynologyDrive/OLIVETI RITROVATI/loghi/coop oliveti ritrovati.svg`
 
-```
-File ufficiale: public/images/ring-mark.svg
-Sorgente:       /Users/emanuelebruno/Desktop/Desktop/SynologyDrive/OLIVETI RITROVATI/loghi/coop oliveti ritrovati.svg
-Fill attuale:   #C4A84A (modificato da #B89A3E con sed)
-```
-
-Nel sito il logo è composto da:
-- `<img src="images/ring-mark.svg">` — il mark SVG ufficiale
-- Due div `.h2` con testo "OLIVETI" / "RITROVATI" in Salmond
-- Una riga tagline "MATERA · BASILICATA" in Salmond oro
+**Idee logo alternative (da sviluppare con Claude Design):**
+- Venature di un tronco: `/Users/emanuelebruno/Downloads/foto_oliveti_ritrovati_logo`
+- Orchidea stilizzata: foto Marco Vitale `b8576a3c-1c24-4c1d-8f80-a38199e43602.jpg`
+- Arco rupestre: foto Marco Vitale `f8f26409-4122-4fea-b6e3-d6821c2d9a23.jpg`
 
 ---
 
-## REFERENCE DESIGN: Hungry Tiger
+## BRAND ASSET — PIPELINE PNG LOGHI
 
-File locale: `/Users/emanuelebruno/Downloads/sito-scaricato/www.eathungrytiger.com/index.html`
+Script in `brand/`:
+- `export-logos.sh` — esporta PNG a 1x/2x/3x in bianco, oro, nero
+- `recolor_svg.py` — ricolora SVG + sostituisce woff2 con TTF base64
+- `text_to_paths.py` — converte `<text>` Salmond in `<path>` con fonttools
 
-Pattern CSS chiave da replicare IDENTICI (solo colori/font adattati):
-- `.jar_motion` — bottiglia centrata e fissa, 100vw x 100dvh
-- `.background_hero` — background fisso per parallax su scroll
-- `.like_h1` — titolo hero 5-7em, Cinzel 900, line-height .9, uppercase, tracking tight
-- `.h-link` — nav pill, border-radius 100em, background oro, padding px
-- `.traditions` — sezione sfondo oro (#B89A3E per noi), testo scuro
-- `.breakdown_grid` — griglia 4 colonne borderate per dettagli prodotto
-- `grain_texture` — overlay grana film, mix-blend-mode:overlay, opacity .04
-- `.wrapper_hero` — position:relative z-index:1 per scrollare sopra la bottiglia
+```bash
+# Esportare loghi oro (default):
+cd brand && ./export-logos.sh
+
+# Varianti colore:
+./export-logos.sh "#FFFFFF"           # tutto bianco
+./export-logos.sh "#232323"           # tutto nero
+./export-logos.sh "#FFFFFF" "#C4A84A" # mark bianco + testo oro
+```
+
+Output: `brand/exports/oliveti-{mark|horizontal|stacked}-{color}-{scale}x.png`
+
+**Reel overlay:** `brand/logo-reel.svg` — 1080×600px trasparente, bianco o oro, per Instagram Reels
+
+---
+
+## STRUTTURA SITO (sezioni in ordine)
+
+1. Header — logo mark + wordmark + nav pills (olio/storia/acquista | contatti/ordina)
+2. Hero/Bottiglia — jar_motion, bottiglia 3D fissa, titolo hero "L'OLIO / RITROVATO / DI MATERA"
+3. Stats strip — ~3000 olivi / anno 1959 / 8h raccolta→molitura
+4. Intro fullbleed — foto panoramica oliveto, testo narrativo
+5. Storia del Territorio — testo + immagine masseria
+6. Cosa c'è dentro — varietà, metodo, 0 additivi
+7. Il Professore — ritratto Prof. Linzalone + bio
+8. Tradizione & Metodo — sezione oro, 4 step
+9. Premi — OLIVARUM 2023 + Slow Food
+10. Acquista — CTA WhatsApp, urgency, prezzo
+11. Contatti — WhatsApp + email + IG + FB
+12. Footer — link + social + copyright
 
 ---
 
@@ -143,17 +223,20 @@ Pattern CSS chiave da replicare IDENTICI (solo colori/font adattati):
 
 | File | Contenuto |
 |------|-----------|
-| `bottiglia.png` | Bottiglia matte nera su sfondo nero — usa mix-blend-mode:lighten |
 | `hero-oliveto.jpg` | Panoramica oliveto con Matera sullo sfondo |
 | `masseria.jpg` | Masseria con arco in tufo |
 | `ulivi.jpg` | Close-up radici ulivi centenari |
-| `prof-linzalone.jpg` | **RITRATTO Prof. Linzalone** (occhiali rotondi, camicia, sfondo olivi — perfetto per sezione "Chi siamo") |
+| `prof-linzalone.jpg` | Ritratto Prof. Linzalone (perfetto per sezione "Chi siamo") |
 | `oliveto-panorama.jpg` | Panoramica oliveti con Matera in lontananza |
 | `oliveti-centenari.jpg` | Campo verde con ulivi centenari solitari |
-| `tour-oliveto.jpg` | Gruppo in visita guidata negli oliveti (Prof. che indica albero) |
-| `masseria-interno.jpg` | Interno masseria in tufo, volta a botte — Prof. che racconta |
+| `tour-oliveto.jpg` | Gruppo in visita guidata (prof che indica albero) |
+| `masseria-interno.jpg` | Interno masseria in tufo, volta a botte |
 | `cappella-rupestre.jpg` | Cappella rupestre con affresco e arco |
-| `frantoio-antico.jpg` | Interno frantoio rupestre con volta in tufo |
+| `frantoio-antico.jpg` | Interno frantoio rupestre in tufo |
+
+**Foto da produrre:** raccolta olive, potatura, frangitura, gramolazione, separazione centrifuga, imbottigliamento, oliveti di San Giacomo, olivi secolari, prof al lavoro → i file arriveranno man mano
+
+**Foto Marco Vitale:** `/Users/emanuelebruno/Downloads/foto_templi_dell'olio/foto_marco_vitale/`
 
 ---
 
@@ -161,41 +244,52 @@ Pattern CSS chiave da replicare IDENTICI (solo colori/font adattati):
 
 Percorso: `/Users/emanuelebruno/Desktop/Desktop/SynologyDrive/PERCORSI RITROVATI/video drone/`
 - DJI_0228.MP4, DJI_0201.MP4, DJI_0020.MP4, DJI_0195.MP4, DJI_0293.MP4
-
-⚠️ File > 50MB: NON caricare su Vercel direttamente. Opzioni:
-1. Comprimere con ffmpeg a < 50MB e caricare
-2. YouTube unlisted + embed
-3. Cloudflare Stream
-
----
-
-## STRUTTURA SITO (sezioni in ordine)
-
-1. **Header** — logo mark + wordmark + nav pills (Lo Shop, La Storia, Contatti)
-2. **Hero/Bottiglia** — jar_motion, bottiglia centrata fissa, titolo hero "L'OLIO / RITROVATO / DI MATERA"
-3. **Intro fullbleed** — foto panoramica oliveto, testo su sfondo
-4. **Storia del Territorio** — testo narrativo, immagine masseria
-5. **Tradizione & Metodo** — sezione oro (traditions), 4 step numerati
-6. **Il Prodotto** — breakdown_grid, prezzo €10, CTA WhatsApp
-7. **Il Professore** — ritratto Prof. Linzalone + bio breve
-8. **Premi** — badge OLIVARUM 2023 + Slow Food
-9. **Galleria** — grid foto Marco Vitale
-10. **Abbinamenti** — cards con suggerimenti culinari
-11. **Acquista** — sezione urgency, bottiglia limitata, CTA WhatsApp grande
-12. **Footer** — Instagram + email + copyright
+- File > 50MB: comprimere con ffmpeg < 50MB oppure YouTube unlisted + embed
 
 ---
 
 ## DOCUMENTI SORGENTE
 
-- Curriculum: `/Users/emanuelebruno/Desktop/Desktop/SynologyDrive/OLIVETI RITROVATI/CURRICULUM OLIVETI RITROVATI.docx`
 - Storia prof: `/Users/emanuelebruno/Downloads/sito_prof/LA STORIA.docx`
 - Varietà olio: `/Users/emanuelebruno/Downloads/sito_prof/OLIVETI RITROVATI.docx`
 - Matera città dell'olio: `/Users/emanuelebruno/Downloads/sito_prof/Matera città dell'olio.docx`
+- Curriculum: `/Users/emanuelebruno/Desktop/Desktop/SynologyDrive/OLIVETI RITROVATI/CURRICULUM OLIVETI RITROVATI.docx`
 
 ---
 
-## LOGHI UFFICIALI
+## STATO LAVORI — 2026-10-02
 
-- SVG: `/Users/emanuelebruno/Desktop/Desktop/SynologyDrive/OLIVETI RITROVATI/loghi/coop oliveti ritrovati.svg`
-- File mark: `brand/logo/olive_tree_mark_CANVA_recolorable.svg` (6 ring paths, viewBox 0 0 1254 1254)
+### Fatto oggi
+- ✅ Nav desktop funzionante (left_links + right_links visibili, hamburger nascosto)
+- ✅ Nav mobile funzionante (hamburger → X animata con toggle menu/close, auto-close su link)
+- ✅ Menu mobile aperto: display flex + transform none
+- ✅ Hero subtitle leggibile: 1.1rem, line-height 1.6
+- ✅ inside_sides ("cosa c'è dentro"): sfondo --nero corretto (rimosso bordeaux Webflow)
+- ✅ Bottiglia mobile: height 70vh (era 60vh, non si vedeva il fondo)
+- ✅ Instagram aggiornato: @olivetiritrovati (era @percorsiritrovatimatera) — 3 occorrenze + testo visibile
+- ✅ Facebook aggiunto: mobile menu + footer + sezione contatti
+- ✅ Export loghi PNG funzionante: pipeline SVG → text-to-paths (fonttools) → rsvg-convert
+- ✅ Reel overlay 1080×600px consegnati (bianco + oro su trasparente)
+- ✅ Pushato su GitHub: commit 8f8f4bd
+
+### Prossimi step
+1. **Outreach B2B** — costruire `outreach/` con scraper Google Maps + templates email/WA + sender SMTP
+2. **WhatsApp Business** — profilo completo prof Linzalone con catalogo prodotti
+3. **Instagram** — 9 foto curate per lancio account (dagli archivi già disponibili)
+4. **Pre-ordini Gift Box Natale** — landing one-pager separata o sezione dedicata nel sito
+5. **Evento Novellolio** — pianificare con Slow Food Matera per novembre
+
+### To clarify con il prof
+- Prezzi definitivi per le 3 linee (cucina/tavola/premio)
+- Quantità prevista produzione 2026
+- Data prevista raccolta Ghiannara (ottobre) e Tarantina (novembre)
+- Accordo su "I Sotterranei": logistica, quantità, stoccaggio
+
+---
+
+## NOTE OPERATIVE
+
+- Il server locale gira su: `uv run python -m http.server 9292` nella cartella `public/`
+- Deploy Vercel: `vercel --prod` dalla root del workspace
+- Python: sempre `uv run python script.py` (il sistema intercetta python3 diretto)
+- Git repo: https://github.com/fusill001/oliveti-ritrovati.git
