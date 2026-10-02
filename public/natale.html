@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<title>Gift Box Natale — Oliveti Ritrovati</title>
+<meta name="description" content="Il regalo di Natale che racconta Matera. Gift Box Oliveti Ritrovati: olio extravergine da olivi centenari, varietà autoctone, frantoio storico nei Sassi dal 1959. Ordina entro novembre."/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta property="og:title" content="Gift Box Natale — Oliveti Ritrovati"/>
+<meta property="og:description" content="L'olio extravergine di Matera come non l'hai mai visto. Pre-ordina la Gift Box di Natale."/>
+<meta property="og:image" content="https://oliveti-ritrovati.vercel.app/images/hero-oliveto.jpg"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+@font-face {
+  font-family: 'Salmond';
+  src: url('fonts/salmond-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Salmond';
+  src: url('fonts/salmond-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GraphikX';
+  src: url('fonts/GraphikX-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+:root {
+  --nero:   #232323;
+  --oro:    #C4A84A;
+  --tufo:   #9A9590;
+  --bianco: #d9d9d9;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--nero);
+  color: var(--bianco);
+  font-family: 'GraphikX', 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(35,35,35,.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(196,168,74,.15);
+}
+.nav-logo {
+  font-family: 'Salmond', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--bianco);
+  text-transform: uppercase;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo img { height: 32px; width: 32px; }
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--oro);
+  color: var(--nero);
+  font-family: 'GraphikX', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: .5rem 1.25rem;
+  border-radius: 100em;
+  transition: background .15s;
+}
+.nav-cta:hover { background: #d4b85a; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 7rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/oliveti-centenari.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(.35);
+}
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/texture_hero.avif');
+  opacity: .06;
+  mix-blend-mode: overlay;
+}
+.hero-content { position: relative; z-index: 1; max-width: 700px; }
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--oro);
+  margin-bottom: 1.5rem;
+}
+.hero-title {
+  font-family: 'Salmond', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: .95;
+  color: var(--bianco);
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+  margin-bottom: 1rem;
+}
+.hero-title span { color: var(--oro); }
+.hero-sub {
+  font-size: clamp(.95rem, 2vw, 1.15rem);
+  color: var(--tufo);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+}
+.dotted {
+  height: 3px;
+  width: 100%;
+  background-image: repeating-radial-gradient(circle, var(--oro) 0, var(--oro) 2px, transparent 2px, transparent 10px);
+  background-size: 10px 3px;
+  background-repeat: repeat-x;
+  margin: 1.5rem 0;
+}
+.countdown {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+.countdown-unit { text-align: center; }
+.countdown-num {
+  display: block;
+  font-family: 'Salmond', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--oro);
+  line-height: 1;
+}
+.countdown-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--tufo);
+  margin-top: .3rem;
+}
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--oro);
+  color: var(--nero);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  border-radius: 100em;
+  transition: background .15s, transform .15s;
+}
+.btn-wa:hover { background: #d4b85a; transform: translateY(-2px); }
+.btn-wa svg { width: 22px; height: 22px; fill: var(--nero); flex-shrink: 0; }
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--tufo);
+  font-size: .875rem;
+  text-decoration: none;
+  padding: .6rem 1.5rem;
+  border-radius: 100em;
+  border: 1px solid rgba(196,168,74,.2);
+  transition: border-color .15s, color .15s;
+  margin-left: 1rem;
+}
+.btn-ghost:hover { border-color: var(--oro); color: var(--bianco); }
+.hero-ctas { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .75rem; }
+
+/* ── BOXES ── */
+.section { padding: 5rem 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-size: 11px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--oro);
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-family: 'Salmond', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--bianco);
+  line-height: 1.05;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+/* Cards prodotto */
+.boxes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.box-card {
+  border: 1px solid rgba(196,168,74,.2);
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  transition: border-color .2s;
+}
+.box-card:hover { border-color: var(--oro); }
+.box-card.featured {
+  border-color: var(--oro);
+  background: rgba(196,168,74,.04);
+}
+.box-badge {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  background: var(--oro);
+  color: var(--nero);
+  padding: .25rem .6rem;
+  border-radius: 100em;
+}
+.box-name {
+  font-family: 'Salmond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bianco);
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+.box-desc {
+  font-size: .875rem;
+  color: var(--tufo);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+.box-includes {
+  list-style: none;
+  margin-bottom: 1.75rem;
+}
+.box-includes li {
+  font-size: .875rem;
+  color: var(--bianco);
+  padding: .4rem 0;
+  border-bottom: 1px solid rgba(196,168,74,.1);
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.box-includes li::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--oro);
+  flex-shrink: 0;
+}
+.box-price {
+  font-family: 'Salmond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--oro);
+  margin-bottom: 1.25rem;
+}
+.box-price span {
+  font-size: 1rem;
+  font-family: 'GraphikX', sans-serif;
+  color: var(--tufo);
+  font-weight: 400;
+}
+.btn-order {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: var(--oro);
+  color: var(--nero);
+  font-size: .875rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: .85rem;
+  border-radius: 8px;
+  transition: background .15s;
+}
+.btn-order:hover { background: #d4b85a; }
+.btn-order svg { width: 18px; height: 18px; fill: var(--nero); }
+
+/* ── STORIA ── */
+.storia { background: rgba(196,168,74,.03); border-top: 1px solid rgba(196,168,74,.1); border-bottom: 1px solid rgba(196,168,74,.1); }
+.storia-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.storia-img {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+}
+.storia-img img { width: 100%; height: 100%; object-fit: cover; }
+.storia-text p {
+  font-size: 1rem;
+  color: var(--tufo);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+.storia-text p strong { color: var(--bianco); }
+.stats-row {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.stat { text-align: left; }
+.stat-num {
+  font-family: 'Salmond', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--oro);
+  line-height: 1;
+}
+.stat-lbl { font-size: .8rem; color: var(--tufo); letter-spacing: .05em; margin-top: .25rem; }
+
+/* ── URGENCY ── */
+.urgency {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(to bottom, rgba(196,168,74,.06), transparent);
+  border-top: 1px solid rgba(196,168,74,.15);
+}
+.urgency h2 {
+  font-family: 'Salmond', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--bianco);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.urgency p { color: var(--tufo); font-size: 1rem; max-width: 480px; margin: 0 auto 2rem; }
+
+/* ── FOOTER ── */
+.footer-mini {
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(196,168,74,.1);
+}
+.footer-mini p { font-size: .8rem; color: var(--tufo); }
+.footer-mini a { color: var(--tufo); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 767px) {
+  .nav { padding: .75rem 1.25rem; }
+  .storia-grid { grid-template-columns: 1fr; }
+  .storia-img { aspect-ratio: 16/9; }
+  .hero { padding: 6rem 1.25rem 3rem; text-align: left; justify-content: flex-start; }
+  .hero-content { text-align: left; }
+  .countdown { justify-content: flex-start; }
+  .hero-ctas { justify-content: flex-start; }
+  .btn-ghost { margin-left: 0; }
+  .section { padding: 3.5rem 1.25rem; }
+  .stats-row { gap: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="images/ring-mark.svg" alt="" aria-hidden="true"/>
+    <span>Oliveti Ritrovati</span>
+  </a>
+  <a href="https://wa.me/393393792491?text=Ciao%20Prof.%20Linzalone%2C%20vorrei%20prenotare%20una%20Gift%20Box%20di%20Natale%20Oliveti%20Ritrovati." target="_blank" rel="noopener" class="nav-cta">
+    <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    Pre-ordina
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="eyebrow">Natale 2026 · Produzione limitata</p>
+    <h1 class="hero-title">Il regalo<br/>che<br/><span>racconta</span><br/>Matera</h1>
+    <div class="dotted"></div>
+    <p class="hero-sub">Olio extravergine da 3000 olivi centenari recuperati dall'abbandono. Varietà autoctone Tarantina e Ghiannara. Frantoio storico nei Sassi dal 1959. Premio OLIVARUM 2023.</p>
+
+    <p style="font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--oro);margin-bottom:.75rem;">Ordina entro il 30 novembre — consegna garantita per Natale</p>
+    <div class="countdown" id="countdown">
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">giorni</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label">ore</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-label">minuti</span></div>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="https://wa.me/393393792491?text=Ciao%20Prof.%20Linzalone%2C%20vorrei%20prenotare%20una%20Gift%20Box%20di%20Natale%20Oliveti%20Ritrovati." target="_blank" rel="noopener" class="btn-wa">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        Pre-ordina su WhatsApp
+      </a>
+      <a href="/" class="btn-ghost">← Sito principale</a>
+    </div>
+  </div>
+</section>
+
+<!-- BOX PRODOTTI -->
+<section class="section">
+  <div class="container">
+    <p class="section-label">Le Gift Box</p>
+    <h2 class="section-title">Scegli<br/>la tua box</h2>
+    <div class="boxes-grid">
+
+      <!-- Cucina -->
+      <div class="box-card">
+        <div class="box-name">Box Cucina</div>
+        <div class="box-desc">L'olio di ogni giorno con una storia straordinaria. Blend delle varietà materane, perfetto per chi ama cucinare.</div>
+        <ul class="box-includes">
+          <li>Blend Tradizionale 500ml</li>
+          <li>Cartoncino storia del progetto</li>
+          <li>Confezione regalo</li>
+        </ul>
+        <div class="box-price">€18 <span>/ box</span></div>
+        <a href="https://wa.me/393393792491?text=Ciao%2C%20vorrei%20prenotare%20la%20Box%20Cucina%20Oliveti%20Ritrovati%20per%20Natale." target="_blank" rel="noopener" class="btn-order">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Prenota su WhatsApp
+        </a>
+      </div>
+
+      <!-- Tavola — Featured -->
+      <div class="box-card featured">
+        <div class="box-badge">Più richiesta</div>
+        <div class="box-name">Box Tavola</div>
+        <div class="box-desc">La scelta per chi vuole fare bella figura. Due bottiglie — una delicata, una intensa — per coprire ogni occasione.</div>
+        <ul class="box-includes">
+          <li>Ghiannara 500ml — delicata, precoce</li>
+          <li>Blend Tradizionale 500ml</li>
+          <li>Cartoncino storia + scheda varietà</li>
+          <li>Confezione regalo premium</li>
+        </ul>
+        <div class="box-price">€35 <span>/ box</span></div>
+        <a href="https://wa.me/393393792491?text=Ciao%2C%20vorrei%20prenotare%20la%20Box%20Tavola%20(Natale)%20Oliveti%20Ritrovati." target="_blank" rel="noopener" class="btn-order">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Prenota su WhatsApp
+        </a>
+      </div>
+
+      <!-- Premio -->
+      <div class="box-card">
+        <div class="box-name">Box Premio</div>
+        <div class="box-desc">Il regalo per intenditori. La Tarantina monovarietale — prima caratterizzata geneticamente a Matera — con la Ghiannara delicata.</div>
+        <ul class="box-includes">
+          <li>Tarantina Monovarietale 500ml ✦ esclusiva</li>
+          <li>Ghiannara 500ml</li>
+          <li>Cartoncino storia + certificato varietale</li>
+          <li>Confezione regalo lusso in tufo</li>
+        </ul>
+        <div class="box-price">€50 <span>/ box</span></div>
+        <a href="https://wa.me/393393792491?text=Ciao%2C%20vorrei%20prenotare%20la%20Box%20Premio%20(Natale)%20Oliveti%20Ritrovati." target="_blank" rel="noopener" class="btn-order">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Prenota su WhatsApp
+        </a>
+      </div>
+
+    </div>
+
+    <div style="margin-top:2rem;padding:1.25rem 1.5rem;border:1px solid rgba(196,168,74,.15);border-radius:8px;font-size:.875rem;color:var(--tufo);line-height:1.7;">
+      <strong style="color:var(--bianco);">Come funziona il pre-ordine:</strong> scrivi al Prof. Linzalone su WhatsApp con la box che vuoi e la quantità. Ricevi conferma in poche ore. Il pagamento avviene alla consegna o via bonifico. Consegna a Matera o spedizione in tutta Italia (spese postali a carico). Produzione limitata: primo arrivato, primo servito.
+    </div>
+  </div>
+</section>
+
+<!-- STORIA -->
+<section class="section storia">
+  <div class="container">
+    <div class="storia-grid">
+      <div class="storia-img">
+        <img src="images/prof-linzalone.jpg" alt="Prof. Francesco Linzalone tra i suoi oliveti" loading="lazy"/>
+      </div>
+      <div class="storia-text">
+        <p class="section-label">Chi siamo</p>
+        <h2 class="section-title">3000 olivi<br/>che stavan<br/>per sparire</h2>
+        <p>Mio nonno aprì un frantoio nei Sassi di Matera nel <strong>1959</strong>. Per decenni ha molito le olive di tutta la campagna materana. Poi la gente è emigrata, i proprietari hanno lasciato gli oliveti a se stessi. <strong>Tremila alberi centenari</strong> — alcuni con oltre 500 anni — abbandonati.</p>
+        <p>Ho deciso di recuperarli. Con comodati d'uso firmati con i proprietari, cura colturale senza alcun chimico, raccolta a mano, molitura entro 8 ore. <strong>Zero fertilizzanti, zero fitofarmaci</strong>. Il metodo dei nostri nonni, con la conoscenza agronomica di oggi.</p>
+        <p>Nel 2023 abbiamo vinto <strong>l'OLIVARUM come Olio Lucano d'Eccellenza</strong>. Nel 2026 abbiamo caratterizzato geneticamente la varietà Tarantina — primo olio varietale certificato di Matera nella storia.</p>
+        <div class="stats-row">
+          <div class="stat"><div class="stat-num">~3000</div><div class="stat-lbl">Olivi centenari recuperati</div></div>
+          <div class="stat"><div class="stat-num">1959</div><div class="stat-lbl">Anno del frantoio di famiglia</div></div>
+          <div class="stat"><div class="stat-num">8h</div><div class="stat-lbl">Raccolta → molitura</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCY CTA FINALE -->
+<section class="urgency">
+  <p class="section-label">Produzione limitata — Natale 2026</p>
+  <h2>Ordina prima<br/>che finisca</h2>
+  <p>Ogni anno produciamo un numero limitato di bottiglie. Le Gift Box di Natale si esauriscono sempre prima della raccolta. Pre-ordina adesso, paghi alla consegna.</p>
+  <a href="https://wa.me/393393792491?text=Ciao%20Prof.%20Linzalone%2C%20vorrei%20prenotare%20una%20Gift%20Box%20di%20Natale%20Oliveti%20Ritrovati." target="_blank" rel="noopener" class="btn-wa" style="display:inline-flex;">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    Pre-ordina su WhatsApp — +39 339 379 2491
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-mini">
+  <p>© <span id="yr"></span> Oliveti Ritrovati — Matera, Basilicata · <a href="mailto:olivetiritrovatimatera@gmail.com">olivetiritrovatimatera@gmail.com</a> · <a href="/">Torna al sito</a></p>
+</footer>
+
+<script>
+// Countdown al 30 novembre 2026
+(function () {
+  const deadline = new Date('2026-11-30T23:59:59');
+  function update() {
+    const diff = deadline - Date.now();
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML = '<span style="color:var(--tufo);font-size:.9rem;">Prenotazioni chiuse</span>';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    document.getElementById('cd-days').textContent = d;
+    document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+  }
+  update();
+  setInterval(update, 60000);
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
