@@ -67,6 +67,15 @@ body {
   color: var(--bianco) !important;
 }
 .base_txt    { color: var(--bianco) !important; }
+/* Hero subtitle — più leggibile */
+.container_cta .txt_box .base_txt {
+  font-size: 1.1rem !important;
+  line-height: 1.6 !important;
+  opacity: 1 !important;
+}
+@media (max-width: 767px) {
+  .container_cta .txt_box .base_txt { font-size: 1rem !important; }
+}
 .caption_txt { color: var(--tufo)   !important; letter-spacing: .12em; }
 
 /* ── SECTION BACKGROUNDS ──────────────────────── */
@@ -74,7 +83,11 @@ body {
 .mobile_menu        { background: var(--nero) !important; }
 .angle_part         { background: var(--nero) !important; }
 .unwrap_part        { background: var(--nero) !important; }
-.inside_sides       { background: var(--nero) !important; }
+.inside_sides,
+.inside_sides *[style*="background"],
+.inside_sides .flexbox_insides,
+.inside_sides .left_side,
+.inside_sides .right_side { background: var(--nero) !important; background-color: var(--nero) !important; }
 .discount_newsletter{ background: var(--nero) !important; }
 .footer             { background: var(--nero) !important; background-color: var(--nero) !important; }
 .blank_section      { background: var(--nero) !important; }
@@ -95,6 +108,28 @@ body {
 .mobile_link div,
 .f-link div           { color: var(--tufo) !important; }
 .s_small_link div     { color: var(--tufo) !important; }
+
+/* Desktop: mostra link, nascondi hamburger */
+@media (min-width: 768px) {
+  .menu_link              { display: none !important; }
+  .left_links,
+  .right_links            { display: flex !important; }
+  .flexbox_header         { display: flex !important; align-items: center !important; }
+  .logo_ht                { flex: 1; display: flex !important; justify-content: center; }
+  .right_links            { margin-left: 0 !important; }
+}
+/* Mobile: nascondi link, mostra hamburger */
+@media (max-width: 767px) {
+  .menu_link              { display: flex !important; }
+  .left_links,
+  .right_links            { display: none !important; }
+}
+/* Mobile menu aperto */
+.mobile_menu.open {
+  display: flex !important;
+  flex-direction: column;
+  transform: none !important;
+}
 
 /* ── BUTTON ───────────────────────────────────── */
 .button .back_color_button { background: var(--oro) !important; }
@@ -149,7 +184,7 @@ body {
   object-fit: cover;
   width: 100%;
   height: 100%;
-  transform: scale(1.5) translateY(20em);
+  transform: scale(1.5);
 }
 .j_p canvas {
   width: 100%;
@@ -159,13 +194,23 @@ body {
 }
 /* Mobile — box copre metà viewport, centrato verticalmente */
 @media (max-width: 767px) {
+  /* Bottiglia mobile — dimensioni reali per canvas + posizione centrata */
   .box_motion {
-    width: 100vw;
-    height: 50vh;
-    margin-bottom: 5.3em;
-    transform: translateY(5em);
+    width: 88vw;
+    height: 70vh;
+    margin: 0 auto;
+    transform: none;
   }
   .j_p { transform: none; }
+
+  /* Menu button — pill alto 3rem, serve spazio sotto nel flexbox */
+  .flexbox_header { padding-bottom: 0.5rem !important; align-items: flex-end !important; }
+  .header { z-index: 200 !important; }
+  .menu_link { margin-bottom: 0 !important; }
+
+  /* Stats strip */
+  .stat_item { padding: 0.4rem 1.2rem; }
+  .stats_strip { gap: 0; padding: 1rem; }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -391,13 +436,13 @@ document.addEventListener('touchmove', function(e) {
 <header class="header">
   <div class="wrapper_header">
     <div class="flexbox_header">
-      <a href="#" class="menu_link w-inline-block" id="menu_toggle">
-        <div class="hamburger_menu">
+      <a href="#" class="menu_link w-inline-block" id="menu_toggle" aria-label="Apri menu">
+        <div class="hamburger_menu" id="hamburger_icon">
           <div class="line first"></div>
           <div class="line second"></div>
         </div>
-        <div class="menu_txt open">menu</div>
-        <div class="menu_txt close">close</div>
+        <div id="menu_label_open" class="menu_txt open">menu</div>
+        <div id="menu_label_close" class="menu_txt close" style="display:none;">close</div>
       </a>
       <div class="left_links">
         <a href="#" aria-current="page" class="h-link w-inline-block w--current"><div class="txt_header">olio</div></a>
@@ -443,9 +488,12 @@ document.addEventListener('touchmove', function(e) {
           <a href="#" class="s_small_link w-inline-block"><div>matera, basilicata, IT</div></a>
           <a href="mailto:olivetiritrovatimatera@gmail.com" class="s_small_link w-inline-block"><div>olivetiritrovatimatera@gmail.com</div></a>
         </div>
-        <div class="ig_mobile_menu">
-          <a href="https://instagram.com/percorsiritrovatimatera" target="_blank" rel="noopener" class="instagram_link w-inline-block" aria-label="Instagram">
+        <div class="ig_mobile_menu" style="display:flex;gap:12px;align-items:center;">
+          <a href="https://www.instagram.com/olivetiritrovati" target="_blank" rel="noopener" class="instagram_link w-inline-block" aria-label="Instagram Oliveti Ritrovati">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61594858266093" target="_blank" rel="noopener" class="instagram_link w-inline-block" aria-label="Facebook Oliveti Ritrovati">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
         </div>
       </div>
@@ -843,8 +891,11 @@ document.addEventListener('touchmove', function(e) {
             <a href="mailto:olivetiritrovatimatera@gmail.com" class="subscribe_button" style="display:block;text-align:center;text-decoration:none;padding:.75rem 1.5rem;font-size:.875rem;font-weight:600;border-radius:6px;background:rgba(200,184,154,.15);color:var(--bianco);border:1px solid rgba(200,184,154,.3);">
               olivetiritrovatimatera@gmail.com
             </a>
-            <a href="https://instagram.com/percorsiritrovatimatera" target="_blank" rel="noopener" class="subscribe_button" style="display:block;text-align:center;text-decoration:none;padding:.75rem 1.5rem;font-size:.875rem;font-weight:600;border-radius:6px;background:rgba(200,184,154,.08);color:var(--tufo);border:1px solid rgba(200,184,154,.15);">
-              @percorsiritrovatimatera
+            <a href="https://www.instagram.com/olivetiritrovati" target="_blank" rel="noopener" class="subscribe_button" style="display:block;text-align:center;text-decoration:none;padding:.75rem 1.5rem;font-size:.875rem;font-weight:600;border-radius:6px;background:rgba(200,184,154,.08);color:var(--tufo);border:1px solid rgba(200,184,154,.15);">
+              @olivetiritrovati · Instagram
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61594858266093" target="_blank" rel="noopener" class="subscribe_button" style="display:block;text-align:center;text-decoration:none;padding:.75rem 1.5rem;font-size:.875rem;font-weight:600;border-radius:6px;background:rgba(200,184,154,.08);color:var(--tufo);border:1px solid rgba(200,184,154,.15);">
+              Oliveti Ritrovati · Facebook
             </a>
           </div>
         </div>
@@ -885,8 +936,11 @@ document.addEventListener('touchmove', function(e) {
           <a href="mailto:olivetiritrovatimatera@gmail.com" class="f-link w-inline-block"><div>olivetiritrovatimatera@gmail.com</div></a>
         </div>
         <div class="m_footer">
-          <a aria-label="Instagram Oliveti Ritrovati" href="https://instagram.com/percorsiritrovatimatera" target="_blank" rel="noopener" class="instagram_link w-inline-block">
+          <a aria-label="Instagram Oliveti Ritrovati" href="https://www.instagram.com/olivetiritrovati" target="_blank" rel="noopener" class="instagram_link w-inline-block">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a aria-label="Facebook Oliveti Ritrovati" href="https://www.facebook.com/profile.php?id=61594858266093" target="_blank" rel="noopener" class="instagram_link w-inline-block">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
         </div>
       </div>
@@ -936,11 +990,34 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   const toggle = document.getElementById('menu_toggle');
   const menu = document.getElementById('mobile_menu');
+  const labelOpen = document.getElementById('menu_label_open');
+  const labelClose = document.getElementById('menu_label_close');
+  const hamburgerIcon = document.getElementById('hamburger_icon');
   if (toggle && menu) {
     toggle.addEventListener('click', function (e) {
       e.preventDefault();
       const open = menu.classList.toggle('open');
       document.body.classList.toggle('menu_open', open);
+      if (labelOpen) labelOpen.style.display = open ? 'none' : '';
+      if (labelClose) labelClose.style.display = open ? '' : 'none';
+      if (hamburgerIcon) {
+        hamburgerIcon.style.transform = open ? 'rotate(45deg)' : '';
+        hamburgerIcon.querySelector('.second').style.opacity = open ? '0' : '';
+      }
+      toggle.setAttribute('aria-label', open ? 'Chiudi menu' : 'Apri menu');
+    });
+    // chiudi menu cliccando i link interni
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menu.classList.remove('open');
+        document.body.classList.remove('menu_open');
+        if (labelOpen) labelOpen.style.display = '';
+        if (labelClose) labelClose.style.display = 'none';
+        if (hamburgerIcon) {
+          hamburgerIcon.style.transform = '';
+          hamburgerIcon.querySelector('.second').style.opacity = '';
+        }
+      });
     });
   }
 });
@@ -985,27 +1062,7 @@ window.addEventListener('DOMContentLoaded', () => {
   if (typeof gsap === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger);
 
-  // ── PARALLAX BOTTIGLIA ────────────────────────────
-  gsap.to('.jar_motion', {
-    yPercent: -30,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.hero_part',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
-    },
-  });
-  gsap.to('.jar_motion', {
-    opacity: 0,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.hero_part',
-      start: '80% top',
-      end: 'bottom top',
-      scrub: true,
-    },
-  });
+  // Bottiglia visibile su tutto il sito — nessun fade/parallax
 
   // ── SEZIONI DINAMICHE ─────────────────────────────
   // Immagini slide in da destra
@@ -1049,11 +1106,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const isMobile = window.innerWidth < 768;
   const container = canvas.parentElement; // .j_p
-  const W = container.offsetWidth  || (isMobile ? window.innerWidth : 608);
-  const H = container.offsetHeight || (isMobile ? window.innerHeight * 0.5 : 656);
+  // Su desktop j_p ha scale(1.5) in CSS: il canvas deve renderare 1.5× il suo offset
+  const cssScale = isMobile ? 1 : 1.5;
+  const W = Math.round((container.offsetWidth  || (isMobile ? window.innerWidth : 608)) * cssScale);
+  const H = Math.round((container.offsetHeight || (isMobile ? window.innerHeight * 0.5 : 656)) * cssScale);
 
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: !isMobile });
-  renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 1.5));
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(W, H);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.4;
@@ -1096,16 +1155,16 @@ window.addEventListener('DOMContentLoaded', () => {
     const loader_el = document.getElementById('bottle-loader');
     if (loader_el) loader_el.style.display = 'none';
 
-    // Scroll-driven: bottiglia si versa verso il lettore scrollando
+    // Scroll-driven su TUTTO il sito — ferma se non scrolla
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       gsap.to(rot, {
-        x: Math.PI * 1.2,  // ~216° = versamento completo
+        x: Math.PI * 1.8,
         ease: 'none',
         scrollTrigger: {
-          trigger: '.hero_part',
+          trigger: 'body',
           start: 'top top',
-          end: 'bottom top',
-          scrub: 1.5,
+          end: 'bottom bottom',
+          scrub: 0.8,
         },
         onUpdate: () => { if (group) group.rotation.x = rot.x; },
       });
@@ -1113,22 +1172,17 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   let rafId = null;
-  let visible = true;
   function animate() {
-    if (!visible) { rafId = null; return; }
     rafId = requestAnimationFrame(animate);
     renderer.render(scene, camera);
   }
-  // Pausa quando la bottiglia esce dallo schermo
-  new IntersectionObserver(([e]) => {
-    visible = e.isIntersecting;
-    if (visible && !rafId) animate();
-  }, { threshold: 0 }).observe(canvas);
   animate();
 
   window.addEventListener('resize', () => {
-    const nW = container.offsetWidth  || window.innerWidth;
-    const nH = container.offsetHeight || window.innerHeight;
+    const m = window.innerWidth < 768;
+    const s = m ? 1 : 1.5;
+    const nW = Math.round((container.offsetWidth  || window.innerWidth) * s);
+    const nH = Math.round((container.offsetHeight || window.innerHeight) * s);
     renderer.setSize(nW, nH);
     camera.aspect = nW / nH;
     camera.updateProjectionMatrix();

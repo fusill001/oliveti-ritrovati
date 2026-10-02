@@ -10,7 +10,7 @@
 **Forma breve:** OLIVETI RITROVATI  
 **Tagline:** L'olio ritrovato di Matera  
 **Sito live:** https://oliveti-ritrovati.vercel.app  
-**Instagram:** @percorsiritrovatimatera  
+**Instagram:** @olivetiritrovati  
 **Email:** olivetiritrovatimatera@gmail.com  
 **WhatsApp ordini:** +39 339 379 2491 → `https://wa.me/393393792491`
 
