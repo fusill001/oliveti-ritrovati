@@ -32,22 +32,40 @@ FIELDNAMES = [
 ]
 
 SEARCHES = [
+    # Matera città
     ("ristorante", "Matera"),
     ("osteria", "Matera"),
     ("trattoria", "Matera"),
     ("enoteca", "Matera"),
     ("wine bar", "Matera"),
     ("agriturismo", "Matera"),
-    ("agriturismo", "Provincia di Matera"),
     ("hotel", "Matera"),
     ("b&b", "Matera"),
     ("gastronomia", "Matera"),
     ("negozio alimentari gourmet", "Matera"),
     ("supermercato", "Matera"),
+    # Provincia di Matera
+    ("agriturismo", "Provincia di Matera"),
     ("ristorante", "Metaponto"),
     ("ristorante", "Pisticci"),
     ("ristorante", "Bernalda"),
     ("ristorante", "Policoro"),
+    ("ristorante", "Montescaglioso"),
+    ("ristorante", "Miglionico"),
+    ("agriturismo", "Metaponto"),
+    ("hotel", "Metaponto"),
+    # Altamura e Puglia confinante
+    ("ristorante", "Altamura"),
+    ("enoteca", "Altamura"),
+    ("agriturismo", "Altamura"),
+    ("gastronomia", "Altamura"),
+    ("ristorante", "Gravina in Puglia"),
+    ("agriturismo", "Gravina in Puglia"),
+    ("ristorante", "Laterza"),
+    ("ristorante", "Ginosa"),
+    ("ristorante", "Castellaneta"),
+    ("agriturismo", "Taranto"),
+    ("enoteca", "Taranto"),
 ]
 
 
@@ -77,36 +95,78 @@ def scrape_query(page, query: str, area: str, existing: set, limit: int) -> list
 
     url = f"https://www.google.com/maps/search/{quote(query + ' ' + area)}"
     print(f"  → {query} | {area}")
-    page.goto(url, wait_until="networkidle", timeout=30_000)
-    time.sleep(2)
+    page.goto(url, wait_until="domcontentloaded", timeout=30_000)
+    time.sleep(3)
 
     results = []
     seen_in_run = set()
 
-    # Scorri la sidebar per caricare più risultati
-    sidebar_sel = '[role="feed"]'
-    try:
-        page.wait_for_selector(sidebar_sel, timeout=8_000)
-    except PlaywrightTimeout:
-        print("    ⚠ sidebar non trovata, salto")
-        return []
+    # Selettori sidebar in ordine di precedenza (Google Maps cambia spesso)
+    SIDEBAR_SELECTORS = [
+        '[role="feed"]',
+        'div[aria-label*="Risultati"]',
+        'div[aria-label*="results"]',
+        '.m6QErb[aria-label]',
+        '.m6QErb',
+    ]
 
-    for _ in range(20):
-        page.eval_on_selector(sidebar_sel, "el => el.scrollBy(0, 800)")
-        time.sleep(1.2)
+    sidebar_sel = None
+    for sel in SIDEBAR_SELECTORS:
+        try:
+            page.wait_for_selector(sel, timeout=5_000)
+            sidebar_sel = sel
+            break
+        except PlaywrightTimeout:
+            continue
+
+    if sidebar_sel is None:
+        # Ultima risorsa: aspetta che ci siano link /maps/place/
+        try:
+            page.wait_for_selector('a[href*="/maps/place/"]', timeout=8_000)
+        except PlaywrightTimeout:
+            print("    ⚠ sidebar non trovata, salto")
+            return []
+
+    # Scroll per caricare più risultati
+    for _ in range(15):
+        if sidebar_sel:
+            try:
+                page.eval_on_selector(sidebar_sel, "el => el.scrollBy(0, 1000)")
+            except Exception:
+                page.evaluate("window.scrollBy(0, 800)")
+        else:
+            page.evaluate("window.scrollBy(0, 800)")
+        time.sleep(1.0)
         items = page.query_selector_all('a[href*="/maps/place/"]')
         if len(items) >= limit:
             break
 
     items = page.query_selector_all('a[href*="/maps/place/"]')
 
+    # Selettori nome — più candidati per robustezza
+    NAME_SELECTORS = [
+        "div.fontHeadlineSmall",
+        ".qBF1Pd",
+        ".NrDZNb .fontHeadlineSmall",
+        "span.fontHeadlineSmall",
+        "[class*='fontHeadline']",
+    ]
+
     for item in items[:limit]:
         try:
             href = item.get_attribute("href") or ""
-            name_el = item.query_selector("div.fontHeadlineSmall, .qBF1Pd")
-            if not name_el:
-                continue
-            name = name_el.inner_text().strip()
+            name = ""
+            for ns in NAME_SELECTORS:
+                el = item.query_selector(ns)
+                if el:
+                    name = el.inner_text().strip()
+                    if name:
+                        break
+            if not name:
+                # fallback: testo diretto del link se ha senso
+                txt = item.inner_text().strip().split("\n")[0]
+                if txt and len(txt) > 2:
+                    name = txt
             if not name:
                 continue
 
@@ -116,9 +176,17 @@ def scrape_query(page, query: str, area: str, existing: set, limit: int) -> list
             reviews_el = item.query_selector("span.UY7F9")
             reviews = reviews_el.inner_text().strip().strip("()").replace(".", "") if reviews_el else ""
 
-            # tipo / categoria
-            cat_el = item.query_selector(".W4Efsd:nth-child(2) > .W4Efsd span:first-child")
-            tipo = cat_el.inner_text().strip() if cat_el else query
+            # tipo / categoria — più selettori candidati
+            tipo = ""
+            for cat_sel in [".W4Efsd:nth-child(2) > .W4Efsd span:first-child", ".W4Efsd span", "span.W4Efsd"]:
+                cat_el = item.query_selector(cat_sel)
+                if cat_el:
+                    t = cat_el.inner_text().strip()
+                    if t and len(t) < 40:
+                        tipo = t
+                        break
+            if not tipo:
+                tipo = query
 
             key = (name.lower(), "")
             if key in existing or key in seen_in_run:
@@ -210,11 +278,20 @@ def main():
         page = ctx.new_page()
 
         # Accetta cookie Google se appare
-        page.goto("https://www.google.com/maps", wait_until="networkidle", timeout=20_000)
-        try:
-            page.click('button:has-text("Accetta tutto")', timeout=4_000)
-        except Exception:
-            pass
+        page.goto("https://www.google.com/maps", wait_until="domcontentloaded", timeout=20_000)
+        time.sleep(2)
+        for cookie_sel in [
+            'input[aria-label="Accetta tutto"]',
+            'button:has-text("Accetta tutto")',
+            'button:has-text("Accept all")',
+            '[aria-label="Accetta tutto"]',
+        ]:
+            try:
+                page.click(cookie_sel, timeout=3_000)
+                time.sleep(1)
+                break
+            except Exception:
+                continue
 
         for query, area in searches:
             new_contacts = scrape_query(page, query, area, existing, args.limit)
