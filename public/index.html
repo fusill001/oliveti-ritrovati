@@ -422,6 +422,237 @@ body {
   .stat_item    { border-right: none; border-bottom: 1px solid rgba(196,168,74,.15); padding: .75rem 1rem; }
   .pullquote_section::before { font-size: 8rem; }
 }
+
+/* ── MOBILE MENU — close button ─────────────────── */
+.mobile_menu_header {
+  display: none;
+}
+@media (max-width: 767px) {
+  .mobile_menu_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem 0;
+    margin-bottom: 1rem;
+  }
+  .mobile_menu_logo {
+    font-family: 'Salmond', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bianco);
+  }
+  .mobile_close_btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(196,168,74,.1);
+    border: 1px solid rgba(196,168,74,.25);
+    color: var(--bianco);
+    font-family: 'GraphikX', sans-serif;
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .5rem .9rem;
+    border-radius: 100em;
+    cursor: pointer;
+    min-height: 44px;
+  }
+  .mobile_close_btn:active { background: rgba(196,168,74,.2); }
+}
+
+/* ── CONTATTI SECTION ───────────────────────────── */
+.contatti_section {
+  background: var(--nero);
+  border-top: 1px solid rgba(196,168,74,.15);
+  padding: 5rem 2rem;
+}
+.contatti_inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 4rem;
+  align-items: center;
+}
+.contatti_title {
+  font-family: 'Salmond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--bianco);
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin: .5rem 0 1rem;
+}
+.contatti_sub {
+  font-size: 1rem;
+  color: var(--tufo);
+  line-height: 1.7;
+  max-width: 420px;
+  margin-bottom: 2rem;
+}
+.contatti_links {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.contatti_btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: 'GraphikX', sans-serif;
+  font-size: .9rem;
+  font-weight: 600;
+  padding: .9rem 1.5rem;
+  border-radius: 8px;
+  min-height: 52px;
+  transition: background .15s, opacity .15s;
+}
+.contatti_btn--primary {
+  background: var(--oro);
+  color: var(--nero);
+}
+.contatti_btn--primary:hover { background: #d4b85a; }
+.contatti_btn--secondary {
+  background: transparent;
+  color: var(--bianco);
+  border: 1px solid rgba(196,168,74,.25);
+}
+.contatti_btn--secondary:hover { border-color: var(--oro); background: rgba(196,168,74,.05); }
+.contatti_social {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin-top: .25rem;
+}
+.contatti_social_link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-size: .8rem;
+  color: var(--tufo);
+  border: 1px solid rgba(196,168,74,.15);
+  padding: .5rem 1rem;
+  border-radius: 100em;
+  min-height: 44px;
+  transition: color .15s, border-color .15s;
+}
+.contatti_social_link:hover { color: var(--bianco); border-color: rgba(196,168,74,.4); }
+.contatti_right { position: relative; }
+.contatti_img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  clip-path: polygon(3% 0%, 97% 2%, 100% 98%, 0% 100%);
+}
+.contatti_img_caption {
+  font-size: .7rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--tufo);
+  text-align: center;
+  margin-top: .75rem;
+}
+
+/* ── MOBILE OTTIMIZZAZIONE GLOBALE ──────────────── */
+@media (max-width: 767px) {
+  /* Wrapper padding */
+  .wrapper,
+  .wrapper_base,
+  .wrapper_footer,
+  .wrapper_discount { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+
+  /* Sezioni padding */
+  .angle_part,
+  .unwrap_part,
+  .inside_sides { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+
+  /* Stats strip — 2x2 grid su mobile */
+  .stats_strip {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 !important;
+  }
+  .stat_item {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(196,168,74,.12) !important;
+    padding: 1.25rem 1rem !important;
+    border-right: 1px solid rgba(196,168,74,.12) !important;
+  }
+  .stat_item:nth-child(2n) { border-right: none !important; }
+  .stat_item:nth-last-child(-n+2) { border-bottom: none !important; }
+
+  /* Prezzi */
+  .pricing_box {
+    display: flex !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* Acquista CTA */
+  .right_cta .button { width: 100%; }
+  .button .back_color_button { border-radius: 8px !important; }
+
+  /* Traditions grid scroll orizzontale */
+  .flex_traditions {
+    display: flex !important;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .flex_traditions::-webkit-scrollbar { display: none; }
+  .item_tradition {
+    flex: 0 0 72vw;
+    scroll-snap-align: start;
+  }
+
+  /* inside_sides — stack colonne */
+  .flexbox_insides {
+    flex-direction: column !important;
+    gap: 2rem;
+  }
+  .left_side, .right_side {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .right_side .image_box { min-height: 260px; }
+  .right_side .image { height: 260px !important; object-fit: cover !important; }
+
+  /* Pullquote */
+  .pullquote_section { padding: 3.5rem 1.25rem; }
+  .pullquote_text { font-size: 1.3rem; }
+
+  /* Footer */
+  .footer_menu {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+  .last_links { flex-direction: column !important; gap: .5rem !important; }
+
+  /* Contatti section */
+  .contatti_inner {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem;
+  }
+  .contatti_right { display: none; }
+  .contatti_section { padding: 3.5rem 1.25rem; }
+  .contatti_sub { max-width: 100%; }
+
+  /* Fullsize CTA */
+  .h2_box_cta { padding: 1.5rem !important; }
+  .content_cta { padding: 1.5rem !important; }
+  .spec_buy { width: 100%; margin-top: 1.5rem !important; }
+
+  /* WA button sopra fold — non sovrapposto al bottone nav */
+  .wa_fixed { bottom: 1.25rem; right: 1.25rem; }
+}
 </style>
 </head>
 
@@ -472,6 +703,13 @@ document.addEventListener('touchmove', function(e) {
 
 <div class="mobile_menu" id="mobile_menu">
   <div class="wrapper_menu">
+    <div class="mobile_menu_header">
+      <span class="mobile_menu_logo">Oliveti Ritrovati</span>
+      <button class="mobile_close_btn" id="mobile_close_btn" aria-label="Chiudi menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><line x1="3" y1="3" x2="17" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="3" x2="3" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>chiudi</span>
+      </button>
+    </div>
     <div class="menu_list">
       <a href="#" aria-current="page" class="mobile_link w-inline-block w--current"><div>home</div></a>
       <a href="#tradition" class="mobile_link w-inline-block"><div>storia</div></a>
@@ -876,41 +1114,38 @@ document.addEventListener('touchmove', function(e) {
   </div>
 </section>
 
-<section id="newsletter" class="discount_newsletter">
-  <div class="flexbox_newsletter">
-    <div class="left_discount">
-      <div class="wrapper_discount">
-        <div class="discount_box">
-          <div class="discount_txt">Scrivici per ordinare, per informazioni, o per una visita guidata agli oliveti.</div>
-        </div>
-        <div class="form_subscribe">
-          <div style="display:flex;flex-direction:column;gap:.75rem;margin-top:1rem;">
-            <a href="https://wa.me/393393792491" target="_blank" rel="noopener" class="subscribe_button" style="display:block;text-align:center;text-decoration:none;padding:.75rem 1.5rem;font-size:.875rem;font-weight:600;border-radius:6px;background:var(--oro);color:var(--nero);">
-              WhatsApp: +39 339 379 2491
-            </a>
-            <a href="mailto:olivetiritrovatimatera@gmail.com" class="subscribe_button" style="display:block;text-align:center;text-decoration:none;padding:.75rem 1.5rem;font-size:.875rem;font-weight:600;border-radius:6px;background:rgba(200,184,154,.15);color:var(--bianco);border:1px solid rgba(200,184,154,.3);">
-              olivetiritrovatimatera@gmail.com
-            </a>
-            <a href="https://www.instagram.com/olivetiritrovati" target="_blank" rel="noopener" class="subscribe_button" style="display:block;text-align:center;text-decoration:none;padding:.75rem 1.5rem;font-size:.875rem;font-weight:600;border-radius:6px;background:rgba(200,184,154,.08);color:var(--tufo);border:1px solid rgba(200,184,154,.15);">
-              @olivetiritrovati · Instagram
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61594858266093" target="_blank" rel="noopener" class="subscribe_button" style="display:block;text-align:center;text-decoration:none;padding:.75rem 1.5rem;font-size:.875rem;font-weight:600;border-radius:6px;background:rgba(200,184,154,.08);color:var(--tufo);border:1px solid rgba(200,184,154,.15);">
-              Oliveti Ritrovati · Facebook
-            </a>
-          </div>
+<section id="newsletter" class="contatti_section">
+  <div class="contatti_inner">
+    <div class="contatti_left">
+      <span class="section_eyebrow">Contatti</span>
+      <h2 class="contatti_title">Scrivici.<br/>Vieni a trovarci.</h2>
+      <p class="contatti_sub">Per ordinare, ricevere informazioni o prenotare una visita guidata agli oliveti di Matera.</p>
+      <div class="contatti_links">
+        <a href="https://wa.me/393393792491" target="_blank" rel="noopener" class="contatti_btn contatti_btn--primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp — +39 339 379 2491
+        </a>
+        <a href="mailto:olivetiritrovatimatera@gmail.com" class="contatti_btn contatti_btn--secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          olivetiritrovatimatera@gmail.com
+        </a>
+        <div class="contatti_social">
+          <a href="https://www.instagram.com/olivetiritrovati" target="_blank" rel="noopener" class="contatti_social_link" aria-label="Instagram Oliveti Ritrovati">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @olivetiritrovati
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61594858266093" target="_blank" rel="noopener" class="contatti_social_link" aria-label="Facebook Oliveti Ritrovati">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            Facebook
+          </a>
         </div>
       </div>
     </div>
-    <div class="right_discount_img">
-      <div class="image_discount">
-        <img src="images/prof-linzalone.jpg" loading="lazy" alt="Prof. Francesco Linzalone, fondatore di Oliveti Ritrovati" class="image"/>
-      </div>
+    <div class="contatti_right">
+      <img src="images/prof-linzalone.jpg" loading="lazy" alt="Prof. Francesco Linzalone, fondatore di Oliveti Ritrovati" class="contatti_img"/>
+      <div class="contatti_img_caption">Prof. Francesco Linzalone · Fondatore</div>
     </div>
   </div>
-  <div class="embed_css w-embed"><style>
-.spin { animation: spin 15s linear infinite; }
-@keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-  </style></div>
 </section>
 
 <section class="footer">
@@ -1019,6 +1254,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
     });
+    // tasto chiudi dentro il menu
+    const closeBtn = document.getElementById('mobile_close_btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        menu.classList.remove('open');
+        document.body.classList.remove('menu_open');
+        if (labelOpen) labelOpen.style.display = '';
+        if (labelClose) labelClose.style.display = 'none';
+        if (hamburgerIcon) {
+          hamburgerIcon.style.transform = '';
+          hamburgerIcon.querySelector('.second').style.opacity = '';
+        }
+      });
+    }
   }
 });
 document.addEventListener('DOMContentLoaded', function () {
