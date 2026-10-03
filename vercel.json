@@ -2,6 +2,7 @@
   "outputDirectory": "public",
   "rewrites": [
     { "source": "/natale", "destination": "/natale.html" },
+    { "source": "/outreach", "destination": "/outreach.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
