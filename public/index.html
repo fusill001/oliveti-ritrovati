@@ -379,7 +379,7 @@ body {
   width: min(40vw, 400px);
 }
 
-/* ── PRICING BOX ──────────────────────────────── */
+/* ── PRICING BOX (legacy, kept for compat) ──── */
 .pricing_box {
   display: inline-flex;
   align-items: baseline;
@@ -399,6 +399,244 @@ body {
 .price_detail {
   font-size: .8rem;
   color: var(--tufo);
+}
+
+/* ── SHOP ─────────────────────────────────────── */
+.shop_section {
+  background: var(--nero);
+  border-top: 1px solid rgba(196,168,74,.15);
+  padding: 5rem 2rem 7rem;
+}
+.shop_inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.shop_header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.shop_title {
+  font-family: 'Salmond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--bianco);
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin: .25rem 0 .5rem;
+}
+.shop_subtitle {
+  font-size: .9rem;
+  color: var(--tufo);
+  line-height: 1.6;
+  max-width: 420px;
+}
+.shop_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.prod_card {
+  background: rgba(196,168,74,.04);
+  border: 1px solid rgba(196,168,74,.15);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .2s;
+}
+.prod_card:hover { border-color: rgba(196,168,74,.4); }
+.prod_img_wrap {
+  background: rgba(196,168,74,.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  position: relative;
+  min-height: 220px;
+}
+.prod_img {
+  max-height: 180px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(196,168,74,.2));
+}
+.prod_img_placeholder {
+  width: 80px;
+  height: 80px;
+  border: 2px solid rgba(196,168,74,.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+.prod_badge {
+  position: absolute;
+  top: .75rem;
+  right: .75rem;
+  font-size: .6rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  background: var(--oro);
+  color: var(--nero);
+  padding: .25rem .6rem;
+  border-radius: 100em;
+  font-weight: 700;
+}
+.prod_body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.prod_name {
+  font-family: 'Salmond', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--bianco);
+  line-height: 1.2;
+}
+.prod_format {
+  font-size: .7rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--oro);
+  margin-top: .15rem;
+}
+.prod_desc {
+  font-size: .82rem;
+  color: var(--tufo);
+  line-height: 1.6;
+  flex: 1;
+}
+.prod_footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: .75rem;
+  border-top: 1px solid rgba(196,168,74,.12);
+}
+.prod_price {
+  font-family: 'Salmond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--oro);
+  line-height: 1;
+}
+.prod_price span {
+  font-size: .75rem;
+  font-family: 'GraphikX', sans-serif;
+  color: var(--tufo);
+  margin-left: .25rem;
+  font-weight: 400;
+}
+.qty_control {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid rgba(196,168,74,.25);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.qty_btn {
+  background: transparent;
+  border: none;
+  color: var(--bianco);
+  width: 38px;
+  height: 38px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s;
+  flex-shrink: 0;
+}
+.qty_btn:hover { background: rgba(196,168,74,.12); }
+.qty_btn:disabled { opacity: .3; cursor: default; }
+.qty_val {
+  font-family: 'GraphikX', sans-serif;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--bianco);
+  min-width: 32px;
+  text-align: center;
+  padding: 0 4px;
+  user-select: none;
+}
+
+/* ── CART BAR ─────────────────────────────────── */
+.cart_bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  background: var(--nero);
+  border-top: 1px solid rgba(196,168,74,.3);
+  padding: .9rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transform: translateY(100%);
+  transition: transform .25s cubic-bezier(.4,0,.2,1);
+}
+.cart_bar.visible { transform: translateY(0); }
+.cart_summary {
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+}
+.cart_items_txt {
+  font-size: .75rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--tufo);
+}
+.cart_total {
+  font-family: 'Salmond', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--oro);
+  line-height: 1;
+}
+.cart_wa_btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  font-family: 'GraphikX', sans-serif;
+  font-size: .9rem;
+  font-weight: 700;
+  padding: .85rem 1.75rem;
+  border-radius: 100em;
+  text-decoration: none;
+  transition: background .15s, transform .15s;
+  white-space: nowrap;
+  min-height: 52px;
+}
+.cart_wa_btn:hover { background: #1db954; transform: scale(1.02); }
+.cart_wa_btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+/* Mobile shop */
+@media (max-width: 767px) {
+  .shop_grid { grid-template-columns: 1fr; }
+  .shop_section { padding: 3.5rem 1.25rem 7rem; }
+  .shop_header { margin-bottom: 2rem; }
+  .cart_bar { padding: .85rem 1.25rem; }
+  .cart_wa_btn { padding: .85rem 1.25rem; font-size: .82rem; }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .shop_grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ── SECTION LABEL ────────────────────────────── */
@@ -860,28 +1098,161 @@ document.addEventListener('touchmove', function(e) {
   </div>
 </div>
 
-<div id="acquista" class="angle_part last_spec">
-  <div class="wrapper sticky_spec" style="position:relative;overflow:hidden;">
-    <img src="images/ring-mark.svg" class="ring_watermark" aria-hidden="true" style="filter:invert(1);left:auto;right:-8%;opacity:.035;"/>
-    <div class="right_cta">
-      <div class="left_cta">
+<div id="acquista" class="shop_section">
+  <div class="shop_inner">
+    <div class="shop_header">
+      <div>
         <span class="section_eyebrow">Ordina ora</span>
-        <div class="base_txt" style="max-width:400px;">Quantità limitata ogni anno. Ogni bottiglia è il frutto di una stagione intera — olivi centenari, raccolta a mano, frantoio rupestre in tufo.</div>
-        <div class="pricing_box">
-          <span class="price_main">€10</span>
-          <span class="price_detail">500ml · spedizione disponibile<br/>o ritiro a Matera</span>
-        </div>
-        <a href="https://wa.me/393393792491" target="_blank" rel="noopener" class="button w-inline-block">
-          <div class="button_txt">ordina via whatsapp</div>
-          <div class="back_color_button"></div>
-        </a>
+        <h2 class="shop_title">Produzione<br/>limitata 2026</h2>
+        <p class="shop_subtitle">Quantità limitata ogni anno. Olivi centenari, raccolta a mano, molitura entro 8 ore. Ordini direttamente via WhatsApp — risposta in poche ore.</p>
+      </div>
+      <div style="font-size:.75rem;color:var(--tufo);text-align:right;line-height:1.7;flex-shrink:0;">
+        Consegna in Italia disponibile<br/>
+        Ritiro a Matera (Sassi, Via Casalnuovo)<br/>
+        <span style="color:var(--oro);">Premio OLIVARUM 2023</span>
       </div>
     </div>
-    <div class="bottom_p">
-      <h2 scrub-each-word="" text-split="" class="h2">Produzione<br/>limitata 2026</h2>
-    </div>
-  </div>
+
+    <div class="shop_grid">
+
+      <!-- Prodotto 1: Bottiglia 500ml -->
+      <div class="prod_card">
+        <div class="prod_img_wrap">
+          <span class="prod_badge">Bestseller</span>
+          <img src="images/bottiglia-reale.png" alt="Bottiglia olio extravergine Oliveti Ritrovati 500ml" class="prod_img" loading="lazy"/>
+        </div>
+        <div class="prod_body">
+          <div>
+            <div class="prod_name">Olio Extravergine</div>
+            <div class="prod_format">Bottiglia in vetro scuro · 500 ml</div>
+          </div>
+          <p class="prod_desc">Blend di varietà Tarantina e Ghiannara da olivi centenari materani. Raccolta 2026, molitura entro 8 ore. Zero fertilizzanti chimici.</p>
+          <div class="prod_footer">
+            <div class="prod_price">€10 <span>/ bott.</span></div>
+            <div class="qty_control" data-product="0">
+              <button class="qty_btn" data-action="dec" aria-label="Diminuisci quantità" disabled>−</button>
+              <span class="qty_val">0</span>
+              <button class="qty_btn" data-action="inc" aria-label="Aumenta quantità">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prodotto 2: Bag in Box 3L -->
+      <div class="prod_card">
+        <div class="prod_img_wrap">
+          <span class="prod_badge">Famiglia</span>
+          <div class="prod_img_placeholder" aria-hidden="true">🫒</div>
+        </div>
+        <div class="prod_body">
+          <div>
+            <div class="prod_name">Bag in Box</div>
+            <div class="prod_format">Formato famiglia · 3 litri</div>
+          </div>
+          <p class="prod_desc">Ideale per l'uso quotidiano in cucina. Il bag in box preserva la qualità dell'olio nel tempo, protetto dall'ossidazione dopo ogni utilizzo.</p>
+          <div class="prod_footer">
+            <div class="prod_price">€30 <span>/ box</span></div>
+            <div class="qty_control" data-product="1">
+              <button class="qty_btn" data-action="dec" aria-label="Diminuisci quantità" disabled>−</button>
+              <span class="qty_val">0</span>
+              <button class="qty_btn" data-action="inc" aria-label="Aumenta quantità">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prodotto 3: Bag in Box 5L -->
+      <div class="prod_card">
+        <div class="prod_img_wrap">
+          <span class="prod_badge">Risparmio</span>
+          <div class="prod_img_placeholder" aria-hidden="true">🫒</div>
+        </div>
+        <div class="prod_body">
+          <div>
+            <div class="prod_name">Bag in Box</div>
+            <div class="prod_format">Formato grande · 5 litri</div>
+          </div>
+          <p class="prod_desc">Perfetto per chi consuma olio di qualità ogni giorno o per uso professionale. Il miglior prezzo al litro della gamma Oliveti Ritrovati.</p>
+          <div class="prod_footer">
+            <div class="prod_price">€50 <span>/ box</span></div>
+            <div class="qty_control" data-product="2">
+              <button class="qty_btn" data-action="dec" aria-label="Diminuisci quantità" disabled>−</button>
+              <span class="qty_val">0</span>
+              <button class="qty_btn" data-action="inc" aria-label="Aumenta quantità">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /shop_grid -->
+  </div><!-- /shop_inner -->
 </div>
+
+<!-- CART BAR -->
+<div class="cart_bar" id="cartBar" role="region" aria-label="Carrello" aria-live="polite">
+  <div class="cart_summary">
+    <div class="cart_items_txt" id="cartItemsTxt">0 articoli</div>
+    <div class="cart_total" id="cartTotal">€0</div>
+  </div>
+  <a href="#" class="cart_wa_btn" id="cartWaBtn" target="_blank" rel="noopener" aria-label="Ordina su WhatsApp">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Ordina su WhatsApp
+  </a>
+</div>
+
+<script>
+(function(){
+  var PRODUCTS = [
+    { name: 'Bottiglia 500ml', price: 10, unit: 'bott.' },
+    { name: 'Bag in Box 3L',   price: 30, unit: 'box'  },
+    { name: 'Bag in Box 5L',   price: 50, unit: 'box'  }
+  ];
+  var qtys = [0, 0, 0];
+
+  function updateCart() {
+    var total = 0, items = 0;
+    qtys.forEach(function(q, i){ total += q * PRODUCTS[i].price; items += q; });
+    var bar = document.getElementById('cartBar');
+    var txt = document.getElementById('cartItemsTxt');
+    var tot = document.getElementById('cartTotal');
+    var btn = document.getElementById('cartWaBtn');
+    tot.textContent = '€' + total;
+    txt.textContent = items === 1 ? '1 articolo' : items + ' articoli';
+    if (items > 0) {
+      bar.classList.add('visible');
+      var lines = [];
+      qtys.forEach(function(q, i){
+        if (q > 0) lines.push(q + '× ' + PRODUCTS[i].name + ' → €' + (q * PRODUCTS[i].price));
+      });
+      var msg = 'Buongiorno! Vorrei ordinare:\n' + lines.join('\n') + '\nTotale: €' + total + '\n\nPotete confermare disponibilità e modalità di consegna? Grazie!';
+      btn.href = 'https://wa.me/393393792491?text=' + encodeURIComponent(msg);
+    } else {
+      bar.classList.remove('visible');
+    }
+  }
+
+  document.querySelectorAll('.qty_control').forEach(function(ctrl) {
+    var idx = parseInt(ctrl.dataset.product);
+    var decBtn = ctrl.querySelector('[data-action="dec"]');
+    var incBtn = ctrl.querySelector('[data-action="inc"]');
+    var valEl  = ctrl.querySelector('.qty_val');
+    incBtn.addEventListener('click', function(){
+      qtys[idx]++;
+      valEl.textContent = qtys[idx];
+      decBtn.disabled = false;
+      updateCart();
+    });
+    decBtn.addEventListener('click', function(){
+      if (qtys[idx] > 0) {
+        qtys[idx]--;
+        valEl.textContent = qtys[idx];
+        if (qtys[idx] === 0) decBtn.disabled = true;
+        updateCart();
+      }
+    });
+  });
+})();
+</script>
 
 <section class="inside_sides">
   <div class="flexbox_insides">
