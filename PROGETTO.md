@@ -1,7 +1,7 @@
 # PROGETTO BIBBIA — OLIVETI RITROVATI
 
 > File di riferimento permanente. Leggi questo prima di toccare qualsiasi cosa.
-> Aggiornato: 2026-10-02
+> Aggiornato: 2026-10-03
 
 ---
 
@@ -64,7 +64,13 @@ Società Cooperativa OLIVETI RITROVATI — costola della Comunità Slow Food OLI
 | **Extra** | Olive al quintale, caciocavallo, salumi, prodotti locali | — | B2B e gift |
 | **Secret** | I Sotterranei | TBD | Lancio aprile 2027. TOP SECRET |
 
-**Prezzi attuali (precedente stagione):** 500ml → €10
+**Prezzi campagna 2026/2027:**
+| Formato | Prezzo |
+|---------|--------|
+| 500 ml bottiglia (vetro scuro) | € 10,00 |
+| 3 L bag-in-box | € 30,00 |
+| 5 L bag-in-box | € 50,00 |
+| Gift Box Natale (2×500ml) | € 35–50 |
 
 ---
 
@@ -249,12 +255,94 @@ Percorso: `/Users/emanuelebruno/Desktop/Desktop/SynologyDrive/PERCORSI RITROVATI
 
 ---
 
-## DOCUMENTI SORGENTE
+## FILE CHIAVE DEL WORKSPACE
+
+| File | Contenuto |
+|------|-----------|
+| `PROGETTO.md` | **Bibbia.** Leggi sempre prima di agire. Vision, brand, stack, grafica, social. |
+| `PROGRESS.md` | Stato avanzamento aggiornato. Cosa fatto, cosa manca, prossimi step. |
+| `ROADMAP.md` | Piano completo per fasi (ottobre 2026 → aprile 2027). |
+| `SCHEDA_PERRONE.md` | Scheda prodotto pronta per Panificio Perrone (e-commerce). |
+| `MONTAGGIO_RULES.md` | Regole montaggio video/reel. |
+| `/tmp/etichetta-print.html` | Etichetta bottiglia 15×10 cm — HTML print-ready. |
+| `/tmp/oliveti-ritrovati-etichetta.pdf` | PDF etichetta pronto per stampa (rigenerare se modifichi HTML). |
+
+## DOCUMENTI SORGENTE (materiale del prof)
 
 - Storia prof: `/Users/emanuelebruno/Downloads/sito_prof/LA STORIA.docx`
 - Varietà olio: `/Users/emanuelebruno/Downloads/sito_prof/OLIVETI RITROVATI.docx`
 - Matera città dell'olio: `/Users/emanuelebruno/Downloads/sito_prof/Matera città dell'olio.docx`
 - Curriculum: `/Users/emanuelebruno/Desktop/Desktop/SynologyDrive/OLIVETI RITROVATI/CURRICULUM OLIVETI RITROVATI.docx`
+
+---
+
+## SOCIAL MEDIA
+
+### Profili
+| Piattaforma | Handle | Stato |
+|-------------|--------|-------|
+| Instagram | @olivetiritrovati | aperto, in allestimento |
+| Facebook | Oliveti Ritrovati (`/profile.php?id=61594858266093`) | aperto, in allestimento |
+
+### Struttura file: `social/`
+```
+social/
+├── instagram/bio.md       bio, highlights spec, impostazioni
+├── facebook/              cover, bio
+├── contenuti/             captions, hashtag, calendario
+└── assets/                grafiche, template
+```
+
+### Stato (2026-10-03)
+- ✅ Profili aperti IG + FB
+- ✅ Foto profilo: `brand/exports/oliveti-mark-c4a84a-3x.png`
+- ✅ Copertina Facebook 820×312px creata (artifact: https://claude.ai/artifact/9b8Lk3hRQAnJzAwH7pQ5UQ)
+  - Sfondo #232323 + mark oro + tagline tufo | da screenshottare e caricare su FB
+- ✅ Bio Instagram pronta: `social/instagram/bio.md`
+- ✅ Token Meta salvati in `.env.local` (FB_PAGE_TOKEN, FB_USER_TOKEN)
+- ✅ Script pubblicazione pronto: `social/publish.py`
+  - `uv run python social/publish.py --schedule` → programma martedì 7/10 ore 19:30
+  - Gestisce upload resumable FB + container IG + scheduling
+- ✅ Video reel pronto: `reel-output/reel_final.mp4` (107MB, CRF 22, H.264+faststart)
+- ⏳ **BLOCCO INSTAGRAM** — 2 step mancanti (vedi sotto)
+- [ ] 5 Highlights (STORIA / I NOSTRI OLI / OLIVETI / ORDINA / PREMI)
+- [ ] 9 post inaugurali (foto + captions)
+
+### Per completare integrazione Instagram (fare prima di martedì)
+
+**Step 1 — Collega IG a Facebook (sul telefono, 2 min):**
+1. Apri Instagram → Profilo → Menu (≡) → Impostazioni → Account
+2. "Passa ad account professionale" → Creatore o Business
+3. "Collega a pagina Facebook" → seleziona "Oliveti Ritrovati"
+
+**Step 2 — Aggiungi permesso al token (su computer, 2 min):**
+1. Vai su: https://developers.facebook.com/tools/explorer/
+2. Seleziona la tua app → "Generate Access Token"
+3. Aggiungi permessi: `instagram_content_publish` + `instagram_basic`
+4. Copia il nuovo token → aggiorna `FB_USER_TOKEN` in `.env.local`
+
+**Step 3 — Trova l'IG User ID:**
+```bash
+# Dopo aver collegato e rigenerato il token:
+cd workspaces/oliveti-ritrovati
+source .env.local
+curl "https://graph.facebook.com/v21.0/1273430235862894?fields=instagram_business_account&access_token=$FB_PAGE_TOKEN"
+# Copia l'id restituito → aggiungi come IG_USER_ID in .env.local
+```
+
+**Step 4 — Carica il video su Vercel (URL pubblico per IG):**
+```bash
+# Copia reel in public/ e deploya
+cp reel-output/reel_final.mp4 public/reel_prof.mp4
+vercel --prod
+# Poi aggiungi in .env.local:
+# VIDEO_PUBLIC_URL=https://oliveti-ritrovati.vercel.app/reel_prof.mp4
+```
+
+**Step 5 — Schedula:**
+```bash
+uv run python social/publish.py --schedule
+```
 
 ---
 
